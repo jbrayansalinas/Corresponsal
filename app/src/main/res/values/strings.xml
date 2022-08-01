@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Corresponsal</string>
+    <string name="correoElectronico">Correo Electronico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="iniciarsesion">Iniciar Sesion</string>
+    <string name="bienvenidoCorresponsal">Bienvenido a Corresponsal</string>
+    <string name="nombreCorresponsal">Nombre Corresponsal</string>
+    <string name="saldoCorresponsal">Saldo Corresponsal</string>
+    <string name="cuentaCorresponsal">Cuenta Corresponsal</string>
+    <string name="texto">Texto</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="habilitar">Habilitar</string>
+    <string name="deshabilitar">Deshabilitar</string>
+    <string name="salir">Salir</string>
+    <string name="cuotas">Cuotas</string>
+    <string name="consultar_corresponsal">Consultar Corresponsal</string>
+    <string name="pagoTarjeta">Pago con Tarjeta</string>
+    <string name="numeroTarjeta">Número de Tarjeta</string>
+    <string name="cvv">CVV</string>
+    <string name="mm">mm</string>
+    <string name="dd">dd</string>
+    <string name="nombreCliente">Nombre del Cliente</string>
+    <string name="valorPagar">Valor a pagar</string>
+</resources>

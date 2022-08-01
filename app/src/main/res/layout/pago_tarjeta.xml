@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/bolitas_azules" />
+
+    <TextView
+        android:id="@+id/nombreCorresponsalTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/bolita_azul"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/saldoCorresponsalTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nombreCorresponsalTarjeta"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/bolita_azul"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/cuentaCorresponsalTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/saldoCorresponsalTarjeta"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/bolita_azul"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/atras_tresTarjeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:longClickable="true"
+        app:srcCompat="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tituloTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="112dp"
+        android:text="@string/pagoTarjeta"
+        android:textAlignment="center"
+        android:textColor="@color/titulo"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/cuotasTarjeta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nombreClienteTarjeta"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/cuotas"
+        android:textAlignment="viewStart"
+        android:textColor="@color/titulo"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/lineaTarjeta"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/tituloTarjeta"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/bolita_azul" />
+
+    <EditText
+        android:id="@+id/numeroTarjeta"
+        android:layout_width="297dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tituloTarjeta"
+        android:layout_marginTop="186dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/txt_login"
+        android:ems="10"
+        android:hint="@string/numeroTarjeta"
+        android:inputType="number"
+        android:padding="7dp"
+        android:textColor="@color/txt_normal"
+        android:textColorHint="@color/txt_hint" />
+
+    <EditText
+        android:id="@+id/cvvTarjeta"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numeroTarjeta"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="276dp"
+        android:background="@drawable/azul"
+        android:ems="10"
+        android:hint="@string/cvv"
+        android:inputType="number"
+        android:padding="7dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/mmTarjeta"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numeroTarjeta"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="168dp"
+        android:background="@drawable/txt_login"
+        android:ems="10"
+        android:hint="@string/mm"
+        android:inputType="number"
+        android:padding="7dp"
+        android:textAlignment="center"
+        android:textColor="@color/txt_normal"
+        android:textColorHint="@color/txt_hint" />
+
+    <EditText
+        android:id="@+id/ddTarjeta"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numeroTarjeta"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="59dp"
+        android:background="@drawable/txt_login"
+        android:ems="10"
+        android:hint="@string/dd"
+        android:inputType="number"
+        android:padding="7dp"
+        android:textAlignment="center"
+        android:textColor="@color/txt_normal"
+        android:textColorHint="@color/txt_hint" />
+
+    <EditText
+        android:id="@+id/nombreClienteTarjeta"
+        android:layout_width="297dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cvvTarjeta"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/txt_login"
+        android:ems="10"
+        android:hint="@string/nombreCliente"
+        android:inputType="text"
+        android:padding="7dp"
+        android:textColor="@color/txt_normal"
+        android:textColorHint="@color/txt_hint" />
+
+    <EditText
+        android:id="@+id/valorTarjeta"
+        aandroid:textColor="@color/txt_normal"
+        android:layout_width="297dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cuotasTarjeta"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/txt_login"
+        android:drawableLeft="@drawable/ic_money"
+        android:ems="10"
+        android:hint="@string/valorPagar"
+        android:inputType="number"
+        android:padding="7dp"
+        android:textColorHint="@color/txt_hint" />
+
+    <Button
+        android:id="@+id/btncancelarTarjeta"
+        android:layout_width="146dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/valorTarjeta"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/btn_transparente"
+        android:text="@string/cancelar"
+        android:textAlignment="center"
+        android:textColor="@color/bolita_azul"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnconfirmarTarjeta"
+        android:layout_width="146dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/valorTarjeta"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_azul"
+        android:text="@string/confirmar"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinnerTarjeta"
+        android:layout_width="23dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cuotasTarjeta"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-25dp"
+        android:layout_toEndOf="@+id/cuotasTarjeta"
+        android:background="@drawable/ic_abajo" />
+
+</RelativeLayout>
