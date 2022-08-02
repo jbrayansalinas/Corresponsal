@@ -14,6 +14,9 @@
         android:theme="@style/Theme.Corresponsal"
         tools:targetApi="31">
         <activity
+            android:name=".Pago_tarjeta"
+            android:exported="false" />
+        <activity
             android:name=".Corresponsal"
             android:exported="false" />
         <activity

@@ -7,7 +7,7 @@
     <include layout="@layout/bolitas_azules" />
 
     <TextView
-        android:id="@+id/nombreCorresponsal"
+        android:id="@+id/nombreCorresponsalTres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,10 +18,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/saldoCorresponsal"
+        android:id="@+id/saldoCorresponsalTres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nombreCorresponsal"
+        android:layout_below="@+id/nombreCorresponsalTres"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
@@ -29,10 +29,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/cuentaCorresponsal"
+        android:id="@+id/cuentaCorresponsalTres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/saldoCorresponsal"
+        android:layout_below="@+id/saldoCorresponsalTres"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
@@ -52,7 +52,7 @@
         app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tituloTres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -64,15 +64,16 @@
         android:textStyle="bold" />
 
     <View
+        android:id="@+id/lineaTres"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/tituloTres"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="5dp"
         android:background="@color/bolita_azul" />
 
     <EditText
-        android:id="@+id/primerCampo"
+        android:id="@+id/primerCampoTres"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -87,10 +88,10 @@
         android:textColorHint="@color/txt_hint" />
 
     <EditText
-        android:id="@+id/primerCampo2"
+        android:id="@+id/segundoCampoTres"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/primerCampo"
+        android:layout_below="@+id/primerCampoTres"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="60dp"
@@ -102,10 +103,10 @@
         android:textColorHint="@color/txt_hint"/>
 
     <EditText
-        android:id="@+id/primerCampo3"
+        android:id="@+id/tercerCampoTres"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/primerCampo2"
+        android:layout_below="@+id/segundoCampoTres"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="60dp"
@@ -118,10 +119,10 @@
         android:textColorHint="@color/txt_hint" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btncancelarTres"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/primerCampo3"
+        android:layout_below="@+id/tercerCampoTres"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
@@ -133,10 +134,10 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnconfirmarTres"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/primerCampo3"
+        android:layout_below="@+id/tercerCampoTres"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"

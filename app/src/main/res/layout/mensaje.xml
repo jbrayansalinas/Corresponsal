@@ -7,7 +7,7 @@
     <include layout="@layout/bolitas_azules" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tituloMensaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,20 +19,20 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgMensaje"
         android:layout_width="313dp"
         android:layout_height="182dp"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/tituloMensaje"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="45dp"
         app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnsalirMensaje"
         android:layout_width="120dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/imgMensaje"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="150dp"

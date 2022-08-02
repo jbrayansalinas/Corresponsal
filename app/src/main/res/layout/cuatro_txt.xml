@@ -7,7 +7,7 @@
     <include layout="@layout/bolitas_azules" />
 
     <TextView
-        android:id="@+id/nombreCorresponsal"
+        android:id="@+id/nombreCorresponsalCuatro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,10 +18,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/saldoCorresponsal"
+        android:id="@+id/saldoCorresponsalCuatro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nombreCorresponsal"
+        android:layout_below="@+id/nombreCorresponsalCuatro"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
@@ -29,10 +29,10 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/cuentaCorresponsal"
+        android:id="@+id/cuentaCorresponsalCuatro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/saldoCorresponsal"
+        android:layout_below="@+id/saldoCorresponsalCuatro"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
@@ -40,7 +40,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/atras_tres"
+        android:id="@+id/atras_Cuatro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -52,7 +52,7 @@
         app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tituloCuatro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -64,15 +64,16 @@
         android:textStyle="bold" />
 
     <View
+        android:id="@+id/lineaCuatro"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/tituloCuatro"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="5dp"
         android:background="@color/bolita_azul" />
 
     <EditText
-        android:id="@+id/primerCampo"
+        android:id="@+id/primerCampoCuatro"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -87,10 +88,10 @@
         android:textColorHint="@color/txt_hint" />
 
     <EditText
-        android:id="@+id/primerCampo2"
+        android:id="@+id/segundoCampoCuatro"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/primerCampo"
+        android:layout_below="@+id/primerCampoCuatro"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="60dp"
@@ -102,10 +103,10 @@
         android:textColorHint="@color/txt_hint" />
 
     <EditText
-        android:id="@+id/tercerCampo"
+        android:id="@+id/tercerCampoCuatro"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/primerCampo2"
+        android:layout_below="@+id/segundoCampoCuatro"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="60dp"
@@ -117,10 +118,10 @@
         android:textColorHint="@color/txt_hint" />
 
     <EditText
-        android:id="@+id/primerCampo3"
+        android:id="@+id/cuartoCampoCuarto"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tercerCampo"
+        android:layout_below="@+id/tercerCampoCuatro"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="60dp"
@@ -132,10 +133,10 @@
         android:textColorHint="@color/txt_hint" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnconfirmarCuatro"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/primerCampo3"
+        android:layout_below="@+id/cuartoCampoCuarto"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
@@ -147,10 +148,10 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btncancelarCuatro"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/primerCampo3"
+        android:layout_below="@+id/cuartoCampoCuarto"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"

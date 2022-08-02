@@ -89,9 +89,9 @@
         android:id="@+id/numeroTarjeta"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloTarjeta"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/tituloTarjeta"
         android:layout_marginTop="186dp"
         android:layout_marginEnd="60dp"
         android:background="@drawable/txt_login"
@@ -171,7 +171,7 @@
 
     <EditText
         android:id="@+id/valorTarjeta"
-        aandroid:textColor="@color/txt_normal"
+        android:textColor="@color/txt_normal"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cuotasTarjeta"
@@ -188,6 +188,7 @@
 
     <Button
         android:id="@+id/btncancelarTarjeta"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/valorTarjeta"
@@ -203,6 +204,7 @@
 
     <Button
         android:id="@+id/btnconfirmarTarjeta"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/valorTarjeta"
@@ -217,12 +219,17 @@
 
     <Spinner
         android:id="@+id/spinnerTarjeta"
-        android:layout_width="23dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cuotasTarjeta"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="-25dp"
-        android:layout_toEndOf="@+id/cuotasTarjeta"
-        android:background="@drawable/ic_abajo" />
+        android:layout_marginTop="-33dp"
+        android:layout_toEndOf="@+id/cuotasTarjeta"/>
+
+    <include
+        android:id="@+id/alerta"
+        layout="@layout/alert_mensaje"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

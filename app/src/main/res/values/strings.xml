@@ -22,4 +22,15 @@
     <string name="dd">dd</string>
     <string name="nombreCliente">Nombre del Cliente</string>
     <string name="valorPagar">Valor a pagar</string>
+    <string name="confirmacion">Confirmación</string>
+    <string name="estimado">Estimado:</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="confirmacionLargaTarjeta">Desea realizar el pago a WPOSS por un valor de:</string>
+    <string name="confirmacionLargaRetiro">Se realizará un retiro al número de cuenta:</string>
+    <string name="valorRetiro">Por un valor de:</string>
+    <string name="recordatorioRetiro">Recuerde que esta acción tiene un cargo de 2.000,00 directamente en su cuenta WPOSS.</string>
+    <string name="confirmacioNombreDeposito">Desea realizar el deposito a:</string>
+    <string name="fecha">FECHA EXPEDICIÓN</string>
+    <string name="consultarcliente">Consultar Cliente</string>
 </resources>

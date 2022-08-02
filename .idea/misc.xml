@@ -5,24 +5,36 @@
       <map>
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/azul.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_azul.xml" value="0.355" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_azul_bordes.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_transparente.xml" value="0.355" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_transparente_bordes.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/buscador.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_back.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_buscar.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_circulo.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_circulo_fondo.xml" value="0.355" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_circulo_rojo.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_linea.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_menu.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/transparente.xml" value="0.355" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/transparente_medio.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/txt_login.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/txt_login_lados.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/activity_corresponsal.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/alert_mensaje.xml" value="0.3078947368421053" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/background_item_spinner.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/bolitas_azules.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/bolitas_rojas.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/confirmacion_deposito.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/confirmacion_retiro.xml" value="0.3087719298245614" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/confirmacion_tarjeta.xml" value="0.4" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/consultar_cliente.xml" value="0.3078947368421053" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/cuatro_txt.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/datos_cliente.xml" value="0.365625" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/datos_corresponsal.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/dos_txt.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/frontend_item_spinner.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/habilitar_corresponsal.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/item_consultas.xml" value="0.365625" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/layout/linea.xml" value="0.27421875" />

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/bolitas_rojas" />
+
+    <TextView
+        android:id="@+id/tituloConsultarCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="98dp"
+        android:text="@string/consultarcliente"
+        android:textAlignment="center"
+        android:textColor="@color/titulo"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/lineaConfirmacionDeposito"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/tituloConsultarCliente"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/bolita_roja" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/tarjeta"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@drawable/chip" />
+
+        <TextView
+            android:id="@+id/marcaTarjetaModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:text="@string/texto"
+            android:textColor="@color/fondo_alert"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/numeroTarjetaModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:text="0000 0000 0000 0000"
+            android:textColor="@color/fondo_alert"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/txtcvv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numeroTarjetaModelo"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/cvv"
+            android:textColor="@color/fondo_alert"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/cvvTarjetaModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numeroTarjetaModelo"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/txtcvv"
+            android:text="000"
+            android:textColor="@color/fondo_alert"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/txtdate"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numeroTarjetaModelo"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/fecha"
+            android:textAlignment="textEnd"
+            android:textColor="@color/fondo_alert"
+            android:textSize="8dp" />
+
+        <TextView
+            android:id="@+id/fechaTarjetaModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numeroTarjetaModelo"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/txtdate"
+            android:text="06/15"
+            android:textColor="@color/fondo_alert"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/nombreClienteModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numeroTarjetaModelo"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:text="JOHS BRAYAN SALINAS LOPEZ"
+            android:textColor="@color/fondo_alert"
+            android:textSize="17dp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -6,7 +6,7 @@
     <include layout="@layout/bolitas_azules" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tituloDtCorresponsal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,9 +18,10 @@
         android:textStyle="bold" />
 
     <View
+        android:id="@+id/lineaDtCorresponsal"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/tituloDtCorresponsal"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="5dp"
         android:background="@color/bolita_azul" />
@@ -29,14 +30,14 @@
         android:id="@+id/relativeDatosCliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/tituloDtCorresponsal"
         android:layout_marginHorizontal="60dp"
         android:layout_marginTop="60dp"
         android:background="@drawable/btn_transparente"
         android:padding="10dp">
 
         <EditText
-            android:id="@+id/campoUno"
+            android:id="@+id/primerCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -44,27 +45,27 @@
             android:textColor="#000000" />
 
         <EditText
-            android:id="@+id/campoDos"
+            android:id="@+id/segundoCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/campoUno"
+            android:layout_below="@+id/primerCampoDtCorresponsal"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
             android:textColor="#000000" />
 
         <EditText
-            android:id="@+id/campoTres"
+            android:id="@+id/tercerCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/campoDos"
+            android:layout_below="@+id/segundoCampoDtCorresponsal"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
             android:textColor="#000000" />
         <EditText
-            android:id="@+id/campoCuatro"
+            android:id="@+id/cuartoCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/campoTres"
+            android:layout_below="@+id/tercerCampoDtCorresponsal"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
             android:textColor="#000000" />
@@ -72,7 +73,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnconfirmarDtCorresponsal"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/relativeDatosCliente"
@@ -87,7 +88,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btncancelarDtCorresponsal"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/relativeDatosCliente"

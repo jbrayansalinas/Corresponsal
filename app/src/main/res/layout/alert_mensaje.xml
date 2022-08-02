@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparente_medio">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/transparente_medio"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textoAlert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/texto"
+            android:textAlignment="center"
+            android:textColor="@color/titulo"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btncancelarAlert"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/textoAlert"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/btn_transparente_bordes"
+            android:text="@string/no"
+            android:textAlignment="center"
+            android:textColor="@color/bolita_azul"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnconfirmarAlert"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/textoAlert"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_azul_bordes"
+            android:text="@string/si"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>
