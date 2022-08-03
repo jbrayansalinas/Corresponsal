@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Corresponsal">
+    tools:context=".corresponsal.Corresponsal">
 
     <include
-        layout="@layout/bolitas_rojas"
-        android:id="@+id/bolitas_rojasConsultarCleinte"/>
+        android:id="@+id/bolitas_rojasCorresponsal"
+        layout="@layout/bolitas_rojas" />
     <include layout="@layout/bolitas_azules"
-        android:id="@+id/bolitas_azulesBanco"/>
+        android:id="@+id/bolitas_azulesCorresponsal"/>
 
     <TextView
         android:id="@+id/nombreCorresponsal"
@@ -19,7 +19,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp"
-        android:text="@string/nombreCorresponsal"
         android:textColor="@color/bolita_azul"
         android:textSize="20sp"
         android:textStyle="bold" />

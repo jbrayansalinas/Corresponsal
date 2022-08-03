@@ -33,46 +33,67 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="170dp"
         android:src="@drawable/ic_circulo_fondo" />
 
-    <EditText
-        android:id="@+id/campoEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_marginHorizontal="70dp"
-        android:layout_marginTop="142dp"
-        android:background="@drawable/txt_login"
-        android:ems="10"
-        android:hint="@string/correoElectronico"
-        android:inputType="textEmailAddress"
-        android:padding="7dp" />
-
-    <EditText
-        android:id="@+id/campoContrasena"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/campoEmail"
-        android:layout_marginTop="13dp"
-        android:layout_marginHorizontal="70dp"
-        android:ems="10"
-        android:hint="@string/contrasena"
-        android:inputType="textPassword"
-        android:background="@drawable/txt_login"
-        android:padding="7dp"/>
-
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
         android:id="@+id/btnIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="650dp"
         android:background="@drawable/btn_azul"
         android:text="@string/iniciarsesion"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/campoEmail2"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/txt_login"
+        android:ems="10"
+        android:hint="@string/contrasena"
+        android:textColorHint="@color/txt_hint"
+        app:endIconMode="password_toggle"
+        app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/bolita_azul"
+        app:endIconTint="@color/bolita_azul">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campoContrasena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/campoEmail2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginHorizontal="70dp"
+        android:layout_marginTop="170dp"
+        android:background="@drawable/txt_login"
+        android:textColorHint="@color/txt_hint"
+        android:ems="10"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_email"
+        app:startIconTint="@color/bolita_azul"
+        android:hint="@string/correoElectronico"
+        app:endIconTint="@color/bolita_azul">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/campoEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 </RelativeLayout>

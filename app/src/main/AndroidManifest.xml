@@ -14,13 +14,58 @@
         android:theme="@style/Theme.Corresponsal"
         tools:targetApi="31">
         <activity
-            android:name=".Pago_tarjeta"
+            android:name=".banco.ListadoCorresponsal"
             android:exported="false" />
         <activity
-            android:name=".Corresponsal"
+            android:name=".banco.ListadoClientes"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".banco.ConsultarCorresponsal"
+            android:exported="false" />
+        <activity
+            android:name=".banco.ConsultarCliente"
+            android:exported="false" />
+        <activity
+            android:name=".banco.RegistrarCliente"
+            android:exported="false" />
+        <activity
+            android:name=".banco.ActualizarCliente"
+            android:exported="false" />
+        <activity
+            android:name=".banco.Banco"
+            android:exported="false" />
+        <activity
+            android:name=".all.Otros"
+            android:exported="false" />
+        <activity
+            android:name=".all.CrearCuenta"
+            android:exported="false" />
+        <activity
+            android:name=".all.ActualizarCorresponsal"
+            android:exported="false" />
+        <activity
+            android:name=".corresponsal.ConsultarSaldo"
+            android:exported="false" />
+        <activity
+            android:name=".corresponsal.HistorialTrasacciones"
+            android:exported="false" />
+        <activity
+            android:name=".corresponsal.Transaccion"
+            android:exported="false" />
+        <activity
+            android:name=".corresponsal.Deposito"
+            android:exported="false" />
+        <activity
+            android:name=".corresponsal.Retiros"
+            android:exported="false" />
+        <activity
+            android:name=".corresponsal.Pago_tarjeta"
+            android:exported="false" />
+        <activity
+            android:name=".corresponsal.Corresponsal"
+            android:exported="false" />
+        <activity
+            android:name=".all.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

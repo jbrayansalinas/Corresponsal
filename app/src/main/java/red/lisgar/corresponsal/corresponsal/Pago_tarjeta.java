@@ -1,7 +1,6 @@
-package red.lisgar.corresponsal;
+package red.lisgar.corresponsal.corresponsal;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.List;
+
+import red.lisgar.corresponsal.R;
 
 public class Pago_tarjeta extends AppCompatActivity {
 
