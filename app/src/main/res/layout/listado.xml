@@ -4,7 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/bolitas_azules" />
+    <include
+        layout="@layout/bolitas_rojas"
+        android:id="@+id/bolitas_rojasListado"/>
+    <include layout="@layout/bolitas_azules"
+        android:id="@+id/bolitas_azulesListado"/>
 
     <ImageView
         android:id="@+id/atras_listado"

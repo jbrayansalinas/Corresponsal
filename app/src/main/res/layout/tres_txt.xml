@@ -4,7 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/bolitas_azules" />
+    <include
+        layout="@layout/bolitas_rojas"
+        android:id="@+id/bolitas_rojasTres"/>
+    <include layout="@layout/bolitas_azules"
+        android:id="@+id/bolitas_azulesTres"/>
 
     <TextView
         android:id="@+id/nombreCorresponsalTres"
@@ -103,6 +107,22 @@
         android:textColorHint="@color/txt_hint"/>
 
     <EditText
+        android:id="@+id/tercerCampoTresIcon"
+        android:layout_width="297dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/segundoCampoTres"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/txt_login"
+        android:drawableStart="@drawable/ic_money"
+        android:ems="10"
+        android:inputType="number"
+        android:padding="7dp"
+        android:textColor="@color/txt_normal"
+        android:textColorHint="@color/txt_hint" />
+
+    <EditText
         android:id="@+id/tercerCampoTres"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
@@ -111,14 +131,13 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="60dp"
         android:background="@drawable/txt_login"
-        android:drawableLeft="@drawable/ic_money"
         android:ems="10"
         android:inputType="number"
         android:padding="7dp"
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarTres"
         android:layout_width="146dp"
         android:layout_height="35dp"
@@ -133,7 +152,7 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnconfirmarTres"
         android:layout_width="146dp"
         android:layout_height="35dp"
@@ -142,6 +161,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/btn_azul"
+        android:textColor="@color/white"
         android:text="@string/confirmar"
         android:textAlignment="center"
         android:textSize="14sp"

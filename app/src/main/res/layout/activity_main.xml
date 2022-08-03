@@ -62,7 +62,8 @@
         android:background="@drawable/txt_login"
         android:padding="7dp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@color/white"
         android:id="@+id/btnIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

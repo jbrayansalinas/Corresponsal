@@ -33,4 +33,6 @@
     <string name="confirmacioNombreDeposito">Desea realizar el deposito a:</string>
     <string name="fecha">FECHA EXPEDICIÓN</string>
     <string name="consultarcliente">Consultar Cliente</string>
+    <string name="saldo">Saldo:</string>
+    <string name="aceptar">Aceptar</string>
 </resources>

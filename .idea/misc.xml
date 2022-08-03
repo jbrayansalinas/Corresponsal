@@ -6,8 +6,12 @@
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/azul.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_azul.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_azul_bordes.xml" value="0.343" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_rojo.xml" value="0.343" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_rojo_bordes.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_transparente.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_transparente_bordes.xml" value="0.343" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_transparente_bordes_rojo.xml" value="0.343" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/btn_transparente_roja.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/buscador.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_back.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_buscar.xml" value="0.355" />
@@ -16,6 +20,7 @@
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_circulo_rojo.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_linea.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_menu.xml" value="0.355" />
+        <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/ic_money.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/transparente.xml" value="0.355" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/transparente_medio.xml" value="0.343" />
         <entry key="..\:/Users/Wposs/AndroidStudioProjects/Corresponsal/app/src/main/res/drawable/txt_login.xml" value="0.355" />

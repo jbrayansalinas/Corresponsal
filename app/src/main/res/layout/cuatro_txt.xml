@@ -4,7 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/bolitas_azules" />
+    <include
+        layout="@layout/bolitas_rojas"
+        android:id="@+id/bolitas_rojasCuatro"/>
+    <include layout="@layout/bolitas_azules"
+        android:id="@+id/bolitas_azulesCuatro"/>
 
     <TextView
         android:id="@+id/nombreCorresponsalCuatro"
@@ -132,7 +136,7 @@
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnconfirmarCuatro"
         android:layout_width="146dp"
         android:layout_height="35dp"
@@ -147,7 +151,8 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@color/white"
         android:id="@+id/btncancelarCuatro"
         android:layout_width="146dp"
         android:layout_height="35dp"

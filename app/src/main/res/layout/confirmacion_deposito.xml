@@ -108,12 +108,12 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="11dp"
         android:textAlignment="viewStart"
+        android:textColor="@color/txt_normal"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/txt_normal"
         app:drawableLeftCompat="@drawable/ic_money" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarDepositoConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"
@@ -128,7 +128,8 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@color/white"
         android:id="@+id/btnconfirmarDepositoConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"

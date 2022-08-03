@@ -127,7 +127,7 @@
         android:textSize="12sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarRetiroConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"
@@ -142,7 +142,8 @@
         android:textSize="14sp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:textColor="@color/white"
         android:id="@+id/btnconfirmarRetiroConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"

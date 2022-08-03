@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/bolitas_rojas" />
+    <include
+        layout="@layout/bolitas_rojas"
+        android:id="@+id/bolitas_rojasConsultarCleinte"/>
 
     <TextView
         android:id="@+id/tituloConsultarCliente"
@@ -21,7 +23,7 @@
         android:textStyle="bold" />
 
     <View
-        android:id="@+id/lineaConfirmacionDeposito"
+        android:id="@+id/lineaConsultarCliente"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_below="@+id/tituloConsultarCliente"
@@ -36,7 +38,8 @@
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="200dp"
         android:background="@drawable/tarjeta"
-        android:padding="15dp">
+        android:padding="15dp"
+        android:id="@+id/relativeCard">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -99,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/numeroTarjetaModelo"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="150dp"
+            android:layout_marginStart="120dp"
             android:layout_marginTop="5dp"
             android:text="@string/fecha"
             android:textAlignment="textEnd"
@@ -131,5 +134,58 @@
             android:textSize="17dp" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/texto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeCard"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/saldo"
+        android:textAlignment="viewStart"
+        android:textColor="@color/titulo"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pagoConsultarCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeCard"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="36dp"
+        android:text="100.000,00"
+        android:textAlignment="viewStart"
+        android:textColor="@color/txt_normal"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableRightCompat="@drawable/ic_money_gris" />
+
+    <View
+        android:id="@+id/lineaSaldoConsultarCliente"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/pagoConsultarCliente"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/bolita_roja" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnsalirMensaje"
+        android:layout_width="124dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/pagoConsultarCliente"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="146dp"
+        android:background="@drawable/btn_rojo"
+        android:text="@string/aceptar"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Corresponsal">
 
-    <include layout="@layout/bolitas_azules" />
+    <include
+        layout="@layout/bolitas_rojas"
+        android:id="@+id/bolitas_rojasConsultarCleinte"/>
+    <include layout="@layout/bolitas_azules"
+        android:id="@+id/bolitas_azulesBanco"/>
 
     <TextView
         android:id="@+id/nombreCorresponsal"
