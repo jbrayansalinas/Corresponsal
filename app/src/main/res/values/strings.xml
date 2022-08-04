@@ -35,4 +35,7 @@
     <string name="consultarcliente">Consultar Cliente</string>
     <string name="saldo">Saldo:</string>
     <string name="aceptar">Aceptar</string>
+    <string name="actualizarCorresponsal">Actualizar Corresponsal</string>
+    <string name="actualizarClientes">Actualizar Clientes</string>
+    <string name="cerrarSesion">Cerrar Sesión</string>
 </resources>

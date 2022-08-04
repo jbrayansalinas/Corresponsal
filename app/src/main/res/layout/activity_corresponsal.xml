@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
         android:textColor="@color/bolita_azul"
         android:textSize="20sp"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nombreCorresponsal"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
         android:textSize="16sp"
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/saldoCorresponsal"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
         android:textSize="16sp"
@@ -55,7 +55,7 @@
         android:layout_marginEnd="19dp"
         android:clickable="true"
         android:longClickable="true"
-        app:srcCompat="@drawable/ic_menu" />
+        android:src="@drawable/ic_menu" />
 
 
     <androidx.recyclerview.widget.RecyclerView

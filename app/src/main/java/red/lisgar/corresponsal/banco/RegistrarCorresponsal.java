@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RegistrarCliente extends AppCompatActivity {
+public class RegistrarCorresponsal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/actualizarCorresponsal"
+        android:id="@+id/actualizarCorresponsal"/>
+    <item android:title="@string/actualizarClientes"
+        android:id="@+id/actualizarClientes"/>
+    <item android:title="@string/cerrarSesion"
+        android:id="@+id/cerrarSesion"/>
+
+</menu>

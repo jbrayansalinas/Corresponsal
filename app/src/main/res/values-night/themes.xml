@@ -12,5 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:itemTextAppearance">@style/ChangeTextColor</item>
+        <item name="android:itemBackground">@drawable/btn_transparente_roja</item>
+    </style>
+
+    <style name="ChangeTextColor" parent="android:TextAppearance.Widget.IconMenu.Item">
+
+        <item name="android:textColor">@color/bolita_roja</item>
+        <item name="android:background">@drawable/btn_transparente_bordes_rojo</item>
+
     </style>
 </resources>
