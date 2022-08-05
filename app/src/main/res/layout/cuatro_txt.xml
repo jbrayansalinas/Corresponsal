@@ -7,15 +7,17 @@
     <include
         layout="@layout/bolitas_rojas"
         android:id="@+id/bolitas_rojasCuatro"/>
-    <include layout="@layout/bolitas_azules"
-        android:id="@+id/bolitas_azulesCuatro"/>
+
+    <include
+        android:id="@+id/bolitas_azulesCuatro"
+        layout="@layout/bolitas_azules" />
 
     <TextView
         android:id="@+id/nombreCorresponsalCuatro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:textColor="@color/bolita_azul"
         android:textSize="20sp"
@@ -26,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nombreCorresponsalCuatro"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
         android:textSize="16sp"
@@ -37,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/saldoCorresponsalCuatro"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
         android:textSize="16sp"
@@ -76,71 +78,93 @@
         android:layout_marginTop="5dp"
         android:background="@color/bolita_azul" />
 
-    <EditText
-        android:id="@+id/primerCampoCuatro"
-        android:layout_width="297dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/primerCampoCuatro2"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="205dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/txt_login"
+        android:layout_marginEnd="40dp"
         android:ems="10"
-        android:inputType="text"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
 
-    <EditText
-        android:id="@+id/segundoCampoCuatro"
-        android:layout_width="297dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/primerCampoCuatro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="text|textCapCharacters"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/segundoCampoCuatro2"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/primerCampoCuatro"
+        android:layout_below="@+id/primerCampoCuatro2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/txt_login"
+        android:layout_marginEnd="40dp"
         android:ems="10"
-        android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
 
-    <EditText
-        android:id="@+id/tercerCampoCuatro"
-        android:layout_width="297dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/segundoCampoCuatro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tercerCampoCuatro2"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/segundoCampoCuatro"
+        android:layout_below="@+id/segundoCampoCuatro2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/txt_login"
+        android:layout_marginEnd="40dp"
         android:ems="10"
-        android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
 
-    <EditText
-        android:id="@+id/cuartoCampoCuarto"
-        android:layout_width="297dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tercerCampoCuatro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cuartoCampoCuarto2"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tercerCampoCuatro"
+        android:layout_below="@+id/tercerCampoCuatro2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/txt_login"
+        android:layout_marginEnd="40dp"
         android:ems="10"
-        android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cuartoCampoCuarto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnconfirmarCuatro"
+        android:id="@+id/btncancelarCuatro"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/cuartoCampoCuarto"
+        android:layout_below="@+id/cuartoCampoCuarto2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
@@ -152,17 +176,17 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
-        android:id="@+id/btncancelarCuatro"
+        android:id="@+id/btnconfirmarCuatro"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/cuartoCampoCuarto"
+        android:layout_below="@+id/cuartoCampoCuarto2"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="29dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/btn_azul"
         android:text="@string/confirmar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
 

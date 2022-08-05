@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import red.lisgar.corresponsal.R;
 
-public class Corresponsal extends AppCompatActivity {
+public class CorresponsalHome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

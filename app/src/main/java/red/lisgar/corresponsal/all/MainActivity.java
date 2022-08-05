@@ -7,15 +7,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import red.lisgar.corresponsal.R;
 import red.lisgar.corresponsal.banco.Banco;
-import red.lisgar.corresponsal.corresponsal.Corresponsal;
-import red.lisgar.corresponsal.corresponsal.Pago_tarjeta;
+import red.lisgar.corresponsal.corresponsal.CorresponsalHome;
 import red.lisgar.corresponsal.db.DbCorresponsal;
 
 public class MainActivity extends AppCompatActivity{
@@ -55,48 +53,40 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void ingresarCorresponsal(){
-        Intent intent = new Intent(this, Corresponsal.class);
+        Intent intent = new Intent(this, CorresponsalHome.class);
         startActivity(intent);
     }
-
     private void ingresarBanco(){
         Intent intent2 = new Intent(this, Banco.class);
         startActivity(intent2);
     }
-
     private void layoutMain(){
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
         campoEmail = findViewById(R.id.campoEmail);
         campoContrasena = findViewById(R.id.campoContrasena);
     }
-
     private void recibeDatos(){
         correo = campoEmail.getText().toString().trim();
         contrasena = campoContrasena.getText().toString().trim();
     }
-
     private void creaAdmin(){
         CoAdmin = "admin@wposs.com".trim();
         PassAdmin = "Admin123*".trim();
     }
-
     private boolean validarObligatoriedad(){
         recibeDatos();
 
-        if (!(TextUtils.isEmpty(correo) && TextUtils.isEmpty(contrasena))){
+        if (!TextUtils.isEmpty(correo) && !TextUtils.isEmpty(contrasena)){
             return true;
         }else{
             return false;
         }
     }
-
     private boolean validarCorreoCorresponsal(){
         recibeDatos();
         dbCorresponsal = new DbCorresponsal(this);
-        boolean checkCorreoCorresponsal =  dbCorresponsal.validarCorreoCorresponsal(correo, contrasena);
-        return checkCorreoCorresponsal;
+        return dbCorresponsal.validarCorreoCorresponsal(correo, contrasena);
     }
-
     private boolean validarCorreoBanco(){
         creaAdmin();
         recibeDatos();

@@ -38,51 +38,70 @@
         android:background="@drawable/btn_transparente_roja"
         android:padding="10dp">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/primerCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:background="@drawable/transparente"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/segundoCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/primerCampoDtCorresponsal"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tercerCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/segundoCampoDtCorresponsal"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/cuartoCampoDtCorresponsal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tercerCampoDtCorresponsal"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
     </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnHabilitarDtCorresponsal"
+        android:layout_width="146dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/relativeDatosCliente"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="130dp"
+        android:background="@drawable/btn_rojo"
+        android:text="@string/habilitar"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnconfirmarDtCorresponsal"
+        android:id="@+id/btncancelarDtCorresponsal"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/relativeDatosCliente"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="30dp"
         android:background="@drawable/btn_transparente_roja"
         android:text="@string/cancelar"
         android:textAlignment="center"
@@ -91,18 +110,21 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
-        android:id="@+id/btncancelarDtCorresponsal"
+        android:id="@+id/btnconfirmarDtCorresponsal"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/relativeDatosCliente"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="150dp"
+        android:layout_marginEnd="217dp"
         android:background="@drawable/btn_rojo"
         android:text="@string/confirmar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
+
+
 
 </RelativeLayout>

@@ -27,13 +27,15 @@
             android:exported="false" />
         <activity
             android:name=".banco.RegistrarCorresponsal"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.rojo.Corresponsal"/>
         <activity
             android:name=".banco.ActualizarCliente"
             android:exported="false" />
         <activity
             android:name=".banco.Banco"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.rojo.Corresponsal"/>
         <activity
             android:name=".all.Otros"
             android:exported="false" />
@@ -62,7 +64,7 @@
             android:name=".corresponsal.Pago_tarjeta"
             android:exported="false" />
         <activity
-            android:name=".corresponsal.Corresponsal"
+            android:name=".corresponsal.CorresponsalHome"
             android:exported="false" />
         <activity
             android:name=".all.MainActivity"

@@ -19,7 +19,6 @@ import red.lisgar.corresponsal.adaptadores.ListaHomeAdapter;
 import red.lisgar.corresponsal.all.ActualizarCorresponsal;
 import red.lisgar.corresponsal.all.CrearCuenta;
 import red.lisgar.corresponsal.all.MainActivity;
-import red.lisgar.corresponsal.corresponsal.Corresponsal;
 import red.lisgar.corresponsal.entidades.Home;
 
 public class Banco extends AppCompatActivity {
@@ -73,14 +72,12 @@ public class Banco extends AppCompatActivity {
         menuCorresponsal = findViewById(R.id.menuCorresponsal);
         recyclerCorresponsal = findViewById(R.id.recyclerCorresponsal);
     }
-
     private void toolbar(){
 
         findViewById(R.id.bolitas_azulesCorresponsal).setVisibility(View.INVISIBLE);
         nombreCorresponsal.setText("Mi Banco");
         nombreCorresponsal.setTextColor(getResources().getColor(R.color.bolita_roja));
     }
-
     // Opciones Array
     public void opciones(){
 
@@ -98,7 +95,6 @@ public class Banco extends AppCompatActivity {
         recyclerCorresponsal.setLayoutManager(new GridLayoutManager(Banco.this, 2));
 
     }
-
     private void actualizarCorresponsal(){
         Intent intent = new Intent(this, ActualizarCorresponsal.class);
         startActivity(intent);
@@ -111,8 +107,6 @@ public class Banco extends AppCompatActivity {
         Intent intent3 = new Intent(this, MainActivity.class);
         startActivity(intent3);
     }
-
-
     @Override
     public void onBackPressed() {
         /*super.onBackPressed();*/

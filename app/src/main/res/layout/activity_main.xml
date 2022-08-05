@@ -70,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/txt_login"
+            android:text="Admin123*"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,6 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/txt_login"
+            android:text="admin@wposs.com"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 </RelativeLayout>
