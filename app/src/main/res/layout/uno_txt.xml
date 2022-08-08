@@ -83,13 +83,14 @@
         android:layout_below="@+id/tituloUno"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="105dp"
-        android:layout_marginEnd="59dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/txt_login"
         android:ems="10"
         android:inputType="number"
         android:padding="7dp"
+        android:textAlignment="center"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint"/>
+        android:textColorHint="@color/txt_hint" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarUno"
@@ -98,7 +99,7 @@
         android:layout_below="@+id/primerCampoUno"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="35dp"
         android:background="@drawable/btn_transparente"
         android:text="@string/cancelar"
         android:textAlignment="center"
@@ -107,18 +108,18 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
         android:id="@+id/btnconfirmarUno"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/primerCampoUno"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="61dp"
         android:background="@drawable/btn_azul"
         android:text="@string/confirmar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
 </RelativeLayout>

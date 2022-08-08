@@ -36,6 +36,10 @@
     <string name="saldo">Saldo:</string>
     <string name="aceptar">Aceptar</string>
     <string name="actualizarCorresponsal">Actualizar Corresponsal</string>
+    <string name="actualizarDatos">Actualizar Datos</string>
     <string name="actualizarClientes">Actualizar Clientes</string>
     <string name="cerrarSesion">Cerrar Sesión</string>
+    <string name="crearCliente">Crear Cliente</string>
+    <string name="ingresePin">Ingrese su Pin</string>
+    <string name="ingreseNuevamentePin">Ingrese Nuevamente su Pin</string>
 </resources>

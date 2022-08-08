@@ -9,18 +9,10 @@ A
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 v
 Fapp/src/main/java/red/lisgar/corresponsal/banco/ActualizarCliente.java,8\b\8b611774c276fb89e874e2c70a58896d3bb704f1
-y
-Iapp/src/main/java/red/lisgar/corresponsal/all/ActualizarCorresponsal.java,5\7\57aff4055189315bffda9cf6c0aaad84e62bcd8a
-u
-Eapp/src/main/java/red/lisgar/corresponsal/banco/ConsultarCliente.java,a\8\a813bf6b4a0fc70e01fb2c3d5e965326b37d9707
 z
 Japp/src/main/java/red/lisgar/corresponsal/banco/ConsultarCorresponsal.java,6\4\64c6f5baf8f2bf9bb14fbbb761e6006d2f413172
 z
 Japp/src/main/java/red/lisgar/corresponsal/corresponsal/ConsultarSaldo.java,2\7\27e328be4e63e317e109507f90dab693bc36c971
-n
->app/src/main/java/red/lisgar/corresponsal/all/CrearCuenta.java,1\c\1ca7e92c6dd5ac75f44d3d7a188e0b14c739becf
-k
-;app/src/main/java/red/lisgar/corresponsal/db/DbCliente.java,1\0\10eefba076268196d2074b132443b7b292b532e7
 p
 @app/src/main/java/red/lisgar/corresponsal/db/DbTrasacciones.java,6\d\6d0ea2fba44fc93b48dd1a02529b91acb97a4004
 t
@@ -43,11 +35,9 @@ p
 @app/src/main/java/red/lisgar/corresponsal/entidades/Cliente.java,b\2\b292a21141fdc210cd886a4c1f4d01b32fb2f59c
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-m
-=app/src/main/java/red/lisgar/corresponsal/entidades/Home.java,c\5\c5c877084ab88bd263a8b0b84af98e54f8425141
-{
-Kapp/src/main/java/red/lisgar/corresponsal/adaptadores/ListaHomeAdapter.java,8\f\8ff45e1fbdb1a6bfa8ef61409cc48f04fe78055d
 j
 :app/src/main/java/red/lisgar/corresponsal/db/DbHelper.java,c\1\c1c4feffa8b0730833f0ae0399d6ec079a96548e
-u
-Eapp/src/main/java/red/lisgar/corresponsal/entidades/Corresponsal.java,a\2\a2fa195265390ab5cee4146e7455c739985ee13b
+x
+Happ/src/main/java/red/lisgar/corresponsal/corresponsal/Pago_tarjeta.java,8\e\8e89b5d1ef7f8b736540fd0fa15ae324e7df3916
+r
+Bapp/src/main/java/red/lisgar/corresponsal/all/SharePreference.java,c\b\cba59cf213f8e7fc39de306d1859226bf8dd602f

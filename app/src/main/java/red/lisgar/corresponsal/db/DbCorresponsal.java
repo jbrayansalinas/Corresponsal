@@ -107,4 +107,44 @@ public class DbCorresponsal extends DbHelper{
             return false;
         }
     }
+
+    public boolean actualizarDatos(String nit, String nombre, String correo, String contrasena) {
+
+        boolean correcto = false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " +
+                    COLUMN_CORRESPONSAL_NOMBRE + " = '"+nombre+"', " +
+                    COLUMN_CORRESPONSAL_CORREO + " = '"+correo+"', " +
+                    COLUMN_CORRESPONSAL_CONTRASENA + " = '"+contrasena+"'" +
+                    " WHERE " + COLUMN_CORRESPONSAL_NIT + " = '"+nit+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
+    public String mostrarNit(String nit){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Corresponsal corresponsal = null;
+        Cursor cursorCorresponsal;
+
+        cursorCorresponsal = db.rawQuery("SELECT * FROM " + TABLE_CORRESPONSAL + " WHERE " + COLUMN_CORRESPONSAL_NIT + " = '" + nit+"'", null);
+
+        if (cursorCorresponsal.moveToFirst()){
+            corresponsal = new Corresponsal();
+            corresponsal.setSaldo_corresponsal(cursorCorresponsal.getString(6));
+        }
+        cursorCorresponsal.close();
+        return corresponsal.getSaldo_corresponsal();
+    }
 }

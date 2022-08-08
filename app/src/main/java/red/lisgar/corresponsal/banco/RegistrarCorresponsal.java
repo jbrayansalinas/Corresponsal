@@ -92,7 +92,7 @@ public class RegistrarCorresponsal extends AppCompatActivity {
             public void onClick(View v) {
                 if (validarObligatoriedad()) {
                     if (!validarNombre()) {
-                        if (!validarCreado()) {
+                        if (!validarNit()) {
                             if (validarEmailFormato()) {
                                 if (!validarEmail()) {
                                     setContentView(R.layout.datos_corresponsal);
@@ -230,7 +230,6 @@ public class RegistrarCorresponsal extends AppCompatActivity {
     }
     private boolean enviarDatos(){
         recibeDatos();
-
         corresponsal = new Corresponsal();
         corresponsal.setNombre_corresponsal(nombre);
         corresponsal.setNit_corresponsal(nit);
@@ -246,7 +245,7 @@ public class RegistrarCorresponsal extends AppCompatActivity {
             return false;
         }
     }
-    private boolean validarCreado(){
+    private boolean validarNit(){
         recibeDatos();
         dbCorresponsal = new DbCorresponsal(this);
         return dbCorresponsal.validarCreado(nit);

@@ -6,12 +6,15 @@ public class Home {
     private int ImgHome;
     private Object clase;
     private String tituloHome;
+    private String direccion;
 
 
-    public Home(int imgHome, String tituloHome, Object clase) {
+
+    public Home(int imgHome, String tituloHome, Object clase, String direccion) {
         this.ImgHome = imgHome;
         this.tituloHome = tituloHome;
         this.clase = clase;
+        this.direccion = direccion;
     }
     public String getTituloHome() {
         return tituloHome;
@@ -20,7 +23,13 @@ public class Home {
     public Object getClase() {
         return clase;
     }
+    public String getDireccion() {
+        return direccion;
+    }
 
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
     public void setClase(Object clase) {
         this.clase = clase;
     }

@@ -76,72 +76,96 @@
         android:layout_marginTop="5dp"
         android:background="@color/bolita_azul" />
 
-    <EditText
-        android:id="@+id/primerCampoTres"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/primerCampoTres2"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="205dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/txt_login"
+        android:layout_marginEnd="50dp"
         android:ems="10"
-        android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
 
-    <EditText
-        android:id="@+id/segundoCampoTres"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/primerCampoTres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="text|textCapCharacters"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/segundoCampoTres2"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/primerCampoTres"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/primerCampoTres2"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/txt_login"
         android:ems="10"
-        android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint"/>
+        android:textColorHint="@color/txt_hint">
 
-    <EditText
-        android:id="@+id/tercerCampoTresIcon"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/segundoCampoTres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tercerCampoTresIcon2"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/segundoCampoTres"
+        android:layout_below="@+id/segundoCampoTres2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/txt_login"
-        android:drawableStart="@drawable/ic_money"
+        app:startIconDrawable="@drawable/ic_money"
         android:ems="10"
         android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
 
-    <EditText
-        android:id="@+id/tercerCampoTres"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tercerCampoTresIcon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tercerCampoTres2"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/segundoCampoTres"
+        android:layout_below="@+id/segundoCampoTres2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/txt_login"
         android:ems="10"
         android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tercerCampoTres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarTres"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/tercerCampoTres"
+        android:layout_below="@+id/tercerCampoTres2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
@@ -156,7 +180,7 @@
         android:id="@+id/btnconfirmarTres"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/tercerCampoTres"
+        android:layout_below="@+id/tercerCampoTres2"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"

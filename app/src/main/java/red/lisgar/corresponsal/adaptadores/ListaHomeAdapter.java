@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import red.lisgar.corresponsal.R;
+import red.lisgar.corresponsal.all.CrearCuenta;
 import red.lisgar.corresponsal.entidades.Home;
 
 public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.HomeViewHOlder> {
@@ -52,6 +53,7 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
                 .into(holder.imgItemHome);
         holder.tituloItemHome.setText(item.getTituloHome());
         holder.clase = item.getClase();
+        holder.direccion = item.getDireccion();
         if (fondo.equals("azul")){
             holder.fondo_itemHome.setCardBackgroundColor(Color.rgb(119, 183, 247));
         }else{
@@ -70,6 +72,7 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
         TextView tituloItemHome;
         Object clase;
         CardView fondo_itemHome;
+        String direccion;
 
         public HomeViewHOlder(@NonNull View itemView) {
             super(itemView);
@@ -81,9 +84,19 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
                 @Override
                 public void onClick(View view) {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, (Class<?>) clase);
-                    intent.putExtra("ID", home.get(getAdapterPosition()).getId());
-                    context.startActivity(intent);
+                    Intent intent;
+                    switch (direccion) {
+                        case "crearCuenta":
+                            Intent intent2 = new Intent(context, CrearCuenta.class);
+                            intent2.putExtra("vista", "banco");
+                            context.startActivity(intent2);
+                        break;
+                        case "":
+                            intent = new Intent(context, (Class<?>) clase);
+                            intent.putExtra("ID", home.get(getAdapterPosition()).getId());
+                            context.startActivity(intent);
+                        break;
+                    }
                 }
             });
         }

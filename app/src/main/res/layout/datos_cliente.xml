@@ -40,7 +40,7 @@
         android:background="@drawable/btn_transparente"
         android:padding="10dp">
 
-        <EditText
+        <TextView
             android:id="@+id/primerCampoDtCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:background="@drawable/transparente"
             android:textColor="#000000" />
 
-        <EditText
+        <TextView
             android:id="@+id/segundoCampoDtCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             android:background="@drawable/transparente"
             android:textColor="#000000" />
 
-        <EditText
+        <TextView
             android:id="@+id/tercerCampoDtCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnconfirmarDtCliente"
+        android:id="@+id/btncancelarDtCliente"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/relativeDatosCliente"
@@ -84,7 +84,7 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btncancelarDtCliente"
+        android:id="@+id/btnconfirmarDtCliente"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/relativeDatosCliente"
