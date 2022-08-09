@@ -3,10 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <RelativeLayout
-    android:id="@+id/recyclerItemConsulta"
+    android:id="@+id/recyclerItemConsultaRojo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/btn_transparente"
+    android:background="@drawable/btn_transparente_roja"
     android:layout_marginBottom="10dp">
 
     <RelativeLayout
@@ -15,8 +15,8 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/campoUno"
-            android:layout_width="200dp"
+            android:id="@+id/campoUnoRojo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:background="@drawable/transparente"
@@ -25,10 +25,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/campoDos"
+            android:id="@+id/campoDosRojo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/campoUno"
+            android:layout_below="@+id/campoUnoRojo"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
             android:textColor="#000000"
@@ -36,10 +36,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/campoTres"
+            android:id="@+id/campoTresRojo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/campoDos"
+            android:layout_below="@+id/campoDosRojo"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
             android:textColor="#000000"
@@ -47,10 +47,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/campoCuatro"
-            android:layout_width="match_parent"
+            android:id="@+id/campoCuatroRojo"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/campoTres"
+            android:layout_below="@+id/campoTresRojo"
             android:layout_marginTop="5dp"
             android:background="@drawable/transparente"
             android:textColor="#000000"
@@ -59,13 +59,15 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/campoOtro"
+        android:id="@+id/campoOtroRojo"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/fondo_azul_bordes_izquierdos"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/btn_rojo_bordes"
         android:padding="5dp"
+        android:paddingStart="10dp"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold" />

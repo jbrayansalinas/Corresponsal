@@ -4,8 +4,12 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/bolitas_rojas"
-        android:id="@+id/bolitas_rojasDtCorresponsal"/>
+        android:id="@+id/bolitas_azulesDtCorresponsal"
+        layout="@layout/bolitas_azules" />
+
+    <include
+        android:id="@+id/bolitas_rojasDtCorresponsal"
+        layout="@layout/bolitas_rojas" />
 
     <TextView
         android:id="@+id/tituloDtCorresponsal"
@@ -42,7 +46,7 @@
         android:focusable="true" />
 
     <RelativeLayout
-        android:id="@+id/relativeDatosCliente"
+        android:id="@+id/relativeDatosCorresponsal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tituloDtCorresponsal"
@@ -96,7 +100,7 @@
         android:id="@+id/btnHabilitarDtCorresponsal"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/relativeDatosCliente"
+        android:layout_below="@+id/relativeDatosCorresponsal"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="100dp"
@@ -112,7 +116,7 @@
         android:id="@+id/btncancelarDtCorresponsal"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/relativeDatosCliente"
+        android:layout_below="@+id/relativeDatosCorresponsal"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="30dp"
@@ -127,7 +131,7 @@
         android:id="@+id/btnconfirmarDtCorresponsal"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/relativeDatosCliente"
+        android:layout_below="@+id/relativeDatosCorresponsal"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="100dp"

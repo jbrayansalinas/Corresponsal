@@ -1,10 +1,0 @@
-
-C
-java:S1604%"(Make this anonymous inner class a lambda(ÜæˆËşÿÿÿÿ
-l	java:S116"RRename this field "CoAdmin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§€´´ÿÿÿÿÿ
-i	java:S116"TRename this field "PassAdmin" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´í«Ç
-\
-java:S1126O"AReplace this if-then-else statement by a single return statement.(µ‰Â…ûÿÿÿÿ
-W
-java:S1126]"AReplace this if-then-else statement by a single return statement.(ğÂİ
-Q	java:S125e"<This block of commented-out lines of code should be removed.(Ÿş·

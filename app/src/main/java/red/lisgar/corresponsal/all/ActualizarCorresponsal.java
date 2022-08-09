@@ -3,8 +3,6 @@ package red.lisgar.corresponsal.all;
 import static android.graphics.Color.parseColor;
 import static red.lisgar.corresponsal.R.color.bolita_roja;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Build;
@@ -18,15 +16,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import red.lisgar.corresponsal.R;
 import red.lisgar.corresponsal.banco.Banco;
-import red.lisgar.corresponsal.banco.RegistrarCorresponsal;
+import red.lisgar.corresponsal.corresponsal.CorresponsalHome;
 import red.lisgar.corresponsal.db.DbCorresponsal;
 import red.lisgar.corresponsal.entidades.Corresponsal;
 
@@ -57,6 +58,7 @@ public class ActualizarCorresponsal extends AppCompatActivity {
     Button btnconfirmarDtCorresponsal;
     Button btncancelarDtCorresponsal;
     Button btnHabilitarDtCorresponsal;
+    RelativeLayout relativeDatosCorresponsal;
 
     //Layout Mensaje
     TextView tituloMensaje;
@@ -65,15 +67,36 @@ public class ActualizarCorresponsal extends AppCompatActivity {
 
     //Cosas de la clase
     DbCorresponsal dbCorresponsal;
+    Corresponsal corresponsal;
     String nombre;
     String nit;
     String correo;
     String contrasena;
+    String correoCorresponsal;
+    String contrasenaCorresponsal;
+    String contrasenaNuevaCorresponsal;
+    String contrasenaNueva2Corresponsal;
+
+    //Layout Tres
+    TextView tituloTres;
+    TextInputEditText primerCampoTres;
+    TextInputLayout primerCampoTres2;
+    TextInputEditText segundoCampoTres;
+    TextInputLayout segundoCampoTres2;
+    TextInputEditText tercerCampoTresIcon;
+    TextInputLayout tercerCampoTresIcon2;
+    TextInputLayout tercerCampoTres2;
+    TextInputEditText tercerCampoTres;
+    Button btncancelarTres;
+    Button btnconfirmarTres;
+    ImageView atras_tres;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
+        correoCorresponsal = extras.getString("correo");
         if (extras.getString("vista").equals("banco")){
             setContentView(R.layout.cuatro_txt);
             layoutRegistrarCorresponsal();
@@ -93,12 +116,15 @@ public class ActualizarCorresponsal extends AppCompatActivity {
                                 if (validarEmailFormato()) {
                                     setContentView(R.layout.datos_corresponsal);
                                     layoutDtCorresponsal();
+                                    toolbarDtCorresponsal();
                                     btnconfirmarDtCorresponsal.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
                                             setContentView(R.layout.mensaje);
                                             if (actualizarDatos()) {
                                                 mensajeOk();
+                                                findViewById(R.id.bolitas_azulesMensaje).setVisibility(View.INVISIBLE);
+                                                btnsalirMensaje.setBackgroundResource(R.drawable.btn_rojo);
                                             } else {
                                                 Toast.makeText(ActualizarCorresponsal.this, "Error al Actualizar", Toast.LENGTH_LONG).show();
                                             }
@@ -108,6 +134,7 @@ public class ActualizarCorresponsal extends AppCompatActivity {
                                         @Override
                                         public void onClick(View v) {
                                             mensajeSalir();
+                                            btnsalirMensaje.setBackgroundResource(R.drawable.btn_rojo);
                                         }
                                     });
                                 } else {Toast.makeText(ActualizarCorresponsal.this, "Formato de correo incorrrecto", Toast.LENGTH_LONG).show();}
@@ -120,12 +147,156 @@ public class ActualizarCorresponsal extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     mensajeSalir();
+                    btnsalirMensaje.setBackgroundResource(R.drawable.btn_rojo);
                 }
             });
-        }else{
+        }
+        else if (extras.getString("vista").equals("corresponsal")){
             setContentView(R.layout.tres_txt);
+            layoutTres();
+
+            btnconfirmarTres.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (validarObligatoriedadTres()) {
+                        if (validarContrasena()) {
+                            if (contrasenaIgual()){
+                                setContentView(R.layout.datos_corresponsal);
+                                layoutDtCorresponsal();
+                                toolbarDtCorresponsalTres();
+                                btnconfirmarDtCorresponsal.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        actualizarContrasena();
+                                        mensajeOk();
+                                        btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                salir2();
+                                            }
+                                        });
+                                    }
+                                });
+                                btncancelarDtCorresponsal.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        mensajeSalir();
+                                        btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                salir2();
+                                            }
+                                        });
+                                    }
+                                });
+                            }else {Toast.makeText(ActualizarCorresponsal.this, "Las contraseñas deben ser iguales", Toast.LENGTH_LONG).show();}
+                        } else {Toast.makeText(ActualizarCorresponsal.this, "Contraseña incorrecta", Toast.LENGTH_LONG).show();}
+                    }else {Toast.makeText(ActualizarCorresponsal.this, "Rellene todos los datos", Toast.LENGTH_LONG).show();}
+                }
+            });
+            btncancelarTres.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mensajeSalir();
+                    btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            salir2();
+                        }
+                    });
+                }
+            });
         }
     }
+
+    private boolean validarObligatoriedadTres(){
+        recibeDatosTres();
+        if (!TextUtils.isEmpty(contrasenaCorresponsal) && !TextUtils.isEmpty(contrasenaNuevaCorresponsal) && !TextUtils.isEmpty(contrasenaNueva2Corresponsal)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private boolean contrasenaIgual(){
+        recibeDatosTres();
+        if (contrasenaNuevaCorresponsal.equals(contrasenaNueva2Corresponsal)){
+            return true;
+        } else return false;
+    }
+    private void recibeDatosTres(){
+        contrasenaCorresponsal = primerCampoTres.getText().toString().trim();
+        contrasenaNuevaCorresponsal = segundoCampoTres.getText().toString().trim();
+        contrasenaNueva2Corresponsal = tercerCampoTres.getText().toString().trim();
+    }
+    private boolean validarContrasena(){
+        recibeDatosTres();
+        dbCorresponsal = new DbCorresponsal(this);
+        return dbCorresponsal.validarCorreoCorresponsal(correoCorresponsal, contrasenaCorresponsal);
+    }
+    private void layoutTres(){
+        tituloTres = findViewById(R.id.tituloTres);
+        primerCampoTres = findViewById(R.id.primerCampoTres);
+        primerCampoTres2 = findViewById(R.id.primerCampoTres2);
+        segundoCampoTres = findViewById(R.id.segundoCampoTres);
+        segundoCampoTres2 = findViewById(R.id.segundoCampoTres2);
+        segundoCampoCuatro = findViewById(R.id.segundoCampoCuatro);
+        tercerCampoTresIcon = findViewById(R.id.tercerCampoTresIcon);
+        tercerCampoTresIcon2 = findViewById(R.id.tercerCampoTresIcon2);
+        tercerCampoTres2 = findViewById(R.id.tercerCampoTres2);
+        tercerCampoTres = findViewById(R.id.tercerCampoTres);
+        btncancelarTres = findViewById(R.id.btncancelarTres);
+        btnconfirmarTres = findViewById(R.id.btnconfirmarTres);
+        atras_tres = findViewById(R.id.atras_tres);
+
+        tituloTres.setText("Actualizar Corresponsal");
+        primerCampoTres2.setHint("Contraseña Actual");
+        segundoCampoTres2.setHint("Contraseña Nueva");
+        tercerCampoTres2.setHint("Confirmar Contraseña Nueva");
+        tercerCampoTresIcon2.setVisibility(View.INVISIBLE);
+        atras_tres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salir2();
+            }
+        });
+    }
+    private void toolbarDtCorresponsalTres(){
+        recibeDatosTres();
+        findViewById(R.id.bolitas_rojasDtCorresponsal).setVisibility(View.INVISIBLE);
+        lineaDtCorresponsal.setBackgroundColor(parseColor("#3399FF"));
+        relativeDatosCorresponsal.setBackground(getDrawable(R.drawable.txt_login));
+        btnconfirmarDtCorresponsal.setBackground(getDrawable(R.drawable.btn_azul));
+        btncancelarDtCorresponsal.setBackground(getDrawable(R.drawable.btn_transparente));
+        btncancelarDtCorresponsal.setTextColor(parseColor("#3399FF"));
+        dbCorresponsal = new DbCorresponsal(this);
+        corresponsal = new Corresponsal();
+        corresponsal =                                                                    dbCorresponsal.mostrarDatosCorresponsalHome(correoCorresponsal);
+        primerCampoDtCorresponsal.setText(corresponsal.getNombre_corresponsal());
+        segundoCampoDtCorresponsal.setText(corresponsal.getNit_corresponsal());
+        tercerCampoDtCorresponsal.setText(corresponsal.getSaldo_corresponsal());
+        cuartoCampoDtCorresponsal.setText(correoCorresponsal);
+    }
+    private void salir2(){
+        Intent intent = new Intent(ActualizarCorresponsal.this, CorresponsalHome.class);
+        intent.putExtra("cuenta", correoCorresponsal);
+        startActivity(intent);
+    }
+    private void actualizarContrasena(){
+        recibeDatosTres();
+        dbCorresponsal = new DbCorresponsal(this);
+        dbCorresponsal.actualizarContrasena(contrasenaNuevaCorresponsal, correoCorresponsal);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     private void toolbar(){
 
@@ -238,7 +409,6 @@ public class ActualizarCorresponsal extends AppCompatActivity {
         return dbCorresponsal.actualizarDatos(nit, nombre, correo, contrasena);
     }
     private void layoutDtCorresponsal(){
-        recibeDatos();
         tituloDtCorresponsal = findViewById(R.id.tituloDtCorresponsal);
         lineaDtCorresponsal = findViewById(R.id.lineaDtCorresponsal);
         primerCampoDtCorresponsal = findViewById(R.id.primerCampoDtCorresponsal);
@@ -248,19 +418,23 @@ public class ActualizarCorresponsal extends AppCompatActivity {
         btnconfirmarDtCorresponsal = findViewById(R.id.btnconfirmarDtCorresponsal);
         btncancelarDtCorresponsal = findViewById(R.id.btncancelarDtCorresponsal);
         btnHabilitarDtCorresponsal = findViewById(R.id.btnHabilitarDtCorresponsal);
+        relativeDatosCorresponsal = findViewById(R.id.relativeDatosCorresponsal);
 
         tituloDtCorresponsal.setText("Confirmar datos Correponsal");
+        btnHabilitarDtCorresponsal.setVisibility(View.INVISIBLE);
+    }
+
+    private void toolbarDtCorresponsal(){
+        recibeDatos();
         primerCampoDtCorresponsal.setText(nombre);
         segundoCampoDtCorresponsal.setText(nit);
         tercerCampoDtCorresponsal.setText(dbCorresponsal.mostrarNit(nit));
         cuartoCampoDtCorresponsal.setText(correo);
-        btnHabilitarDtCorresponsal.setVisibility(View.INVISIBLE);
     }
     private void mensajeOk(){
         mensaje();
         tituloMensaje.setText("Se actualizó el Corresponsal");
         imgMensaje.setImageResource(R.drawable.bien);
-        btnsalirMensaje.setBackgroundResource(R.drawable.btn_rojo);
         btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -270,7 +444,6 @@ public class ActualizarCorresponsal extends AppCompatActivity {
     }
     private void mensaje(){
         setContentView(R.layout.mensaje);
-        findViewById(R.id.bolitas_azulesMensaje).setVisibility(View.INVISIBLE);
         tituloMensaje = findViewById(R.id.tituloMensaje);
         imgMensaje = findViewById(R.id.imgMensaje);
         btnsalirMensaje = findViewById(R.id.btnsalirMensaje);
@@ -279,7 +452,6 @@ public class ActualizarCorresponsal extends AppCompatActivity {
         mensaje();
         tituloMensaje.setText("Actualización del Corresponsal cancelado");
         imgMensaje.setImageResource(R.drawable.error);
-        btnsalirMensaje.setBackgroundResource(R.drawable.btn_rojo);
         btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

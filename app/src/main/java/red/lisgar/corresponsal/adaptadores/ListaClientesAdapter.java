@@ -30,16 +30,16 @@ public class ListaClientesAdapter extends RecyclerView.Adapter<ListaClientesAdap
     @NonNull
     @Override
     public ListaClientesAdapter.ClienteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_consultas, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_consultas_rojo, null, false);
         return new ClienteViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListaClientesAdapter.ClienteViewHolder holder, int position) {
-        holder.campoUno.setText(listaCliente.get(position).getNombre_cliente());
-        holder.campoDos.setText(listaCliente.get(position).getCuenta_cliente());
-        holder.campoTres.setText(listaCliente.get(position).getCedula_cliente());
-        holder.campoOtro.setText(listaCliente.get(position).getSaldo_cliente());
+        holder.campoUnoRojo.setText(listaCliente.get(position).getNombre_cliente());
+        holder.campoDosRojo.setText(listaCliente.get(position).getCuenta_cliente());
+        holder.campoTresRojo.setText(listaCliente.get(position).getCedula_cliente());
+        holder.campoOtroRojo.setText(listaCliente.get(position).getSaldo_cliente());
     }
 
     @Override
@@ -70,19 +70,19 @@ public class ListaClientesAdapter extends RecyclerView.Adapter<ListaClientesAdap
 
     public class ClienteViewHolder extends RecyclerView.ViewHolder {
 
-        TextView campoUno;
-        TextView campoDos;
-        TextView campoTres;
-        TextView campoCuatro;
-        TextView campoOtro;
+        TextView campoUnoRojo;
+        TextView campoDosRojo;
+        TextView campoTresRojo;
+        TextView campoCuatroRojo;
+        TextView campoOtroRojo;
 
         public ClienteViewHolder(@NonNull View itemView) {
             super(itemView);
-            campoUno  = itemView.findViewById(R.id.campoUno);
-            campoDos  = itemView.findViewById(R.id.campoDos);
-            campoTres  = itemView.findViewById(R.id.campoTres);
-            campoCuatro  = itemView.findViewById(R.id.campoCuatro);
-            campoOtro  = itemView.findViewById(R.id.campoOtro);
+            campoUnoRojo  = itemView.findViewById(R.id.campoUnoRojo);
+            campoDosRojo  = itemView.findViewById(R.id.campoDosRojo);
+            campoTresRojo  = itemView.findViewById(R.id.campoTresRojo);
+            campoCuatroRojo  = itemView.findViewById(R.id.campoCuatroRojo);
+            campoOtroRojo  = itemView.findViewById(R.id.campoOtroRojo);
 
         }
     }

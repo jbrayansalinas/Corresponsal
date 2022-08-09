@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.Nullable;
 import androidx.core.util.PatternsCompat;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -74,6 +75,16 @@ public class DbCorresponsal extends DbHelper{
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursorCorresponsal = db.rawQuery("SELECT * FROM " + TABLE_CORRESPONSAL + " WHERE " + COLUMN_CORRESPONSAL_NIT + " =? ",new String[] {nit});
+        if (cursorCorresponsal.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean validarHabilitado(String correo) {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursorCorresponsal = db.rawQuery("SELECT * FROM " + TABLE_CORRESPONSAL + " WHERE " + COLUMN_CORRESPONSAL_CORREO + " =? AND " + COLUMN_CORRESPONSAL_ESTADO + " = 'HABILITADO'",new String[] {correo});
         if (cursorCorresponsal.getCount()>0)
             return true;
         else
@@ -180,6 +191,79 @@ public class DbCorresponsal extends DbHelper{
             db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " +
                     COLUMN_CORRESPONSAL_ESTADO + " = '"+estado+"'" +
                     " WHERE " + COLUMN_CORRESPONSAL_NIT + " = '"+nit+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
+    public ArrayList<Corresponsal> listaCorresponsal(){
+
+        ArrayList<Corresponsal> lista = new ArrayList<>();
+        Cursor cursorCorresponsal;
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Corresponsal corresponsal ;
+
+            cursorCorresponsal = db.rawQuery("select * from "+TABLE_CORRESPONSAL , null);
+
+            if(cursorCorresponsal.moveToFirst()){
+                do {
+                    corresponsal = new Corresponsal();
+                    corresponsal.setId_corresponsal(cursorCorresponsal.getInt(0));
+                    corresponsal.setNombre_corresponsal(cursorCorresponsal.getString(1));
+                    corresponsal.setCuenta_corresponsal(cursorCorresponsal.getString(7));
+                    corresponsal.setNit_corresponsal(cursorCorresponsal.getString(2));
+                    corresponsal.setEstado_corresponsal(cursorCorresponsal.getString(5));
+                    corresponsal.setSaldo_corresponsal(cursorCorresponsal.getString(6));
+                    lista.add(corresponsal);
+                }while (cursorCorresponsal.moveToNext());
+            }else {
+                return null;
+            }
+        } catch (Exception ex){
+            ex.toString();
+        }
+        return lista;
+    }
+
+    public Corresponsal mostrarDatosCorresponsalHome(String correo){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Corresponsal corresponsal = null;
+        Cursor cursorCorresponsal;
+
+        cursorCorresponsal = db.rawQuery("SELECT * FROM " + TABLE_CORRESPONSAL + " WHERE " + COLUMN_CORRESPONSAL_CORREO + " = '" + correo+"'", null);
+
+        if (cursorCorresponsal.moveToFirst()){
+            corresponsal = new Corresponsal();
+            corresponsal.setNombre_corresponsal(cursorCorresponsal.getString(1));
+            corresponsal.setNit_corresponsal(cursorCorresponsal.getString(2));
+            corresponsal.setSaldo_corresponsal(cursorCorresponsal.getString(6));
+            corresponsal.setCuenta_corresponsal(cursorCorresponsal.getString(7));
+        }
+        cursorCorresponsal.close();
+        return corresponsal;
+    }
+
+    public boolean actualizarContrasena(String contrasena, String correo) {
+
+        boolean correcto = false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " +
+                    COLUMN_CORRESPONSAL_CONTRASENA + " = '"+contrasena+"'" +
+                    " WHERE " + COLUMN_CORRESPONSAL_CORREO + " = '"+correo+"'");
             correcto = true;
         } catch (Exception ex){
             ex.toString();

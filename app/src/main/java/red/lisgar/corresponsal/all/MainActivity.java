@@ -1,13 +1,13 @@
 package red.lisgar.corresponsal.all;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -38,8 +38,12 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if (validarObligatoriedad()) { //OBLIGATORIEDAD
-                    if (validarCorreoCorresponsal()) { //CORRESPONSAL
-                        ingresarCorresponsal();
+                    if (validarCorreoCorresponsal()) {//CORRESPONSAL
+                        if (validarHabilitado()) {
+                            ingresarCorresponsal();
+                        }else {
+                            Toast.makeText(MainActivity.this, "El corresponsal está deshabilitado", Toast.LENGTH_LONG).show();
+                        }
                     }else if (validarCorreoBanco()) { // BANCO
                         ingresarBanco();
                     }else {
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity{
 
     private void ingresarCorresponsal(){
         Intent intent = new Intent(this, CorresponsalHome.class);
+        intent.putExtra("cuenta", campoEmail.getText().toString().trim());
         startActivity(intent);
     }
     private void ingresarBanco(){
@@ -75,7 +80,6 @@ public class MainActivity extends AppCompatActivity{
     }
     private boolean validarObligatoriedad(){
         recibeDatos();
-
         if (!TextUtils.isEmpty(correo) && !TextUtils.isEmpty(contrasena)){
             return true;
         }else{
@@ -87,6 +91,13 @@ public class MainActivity extends AppCompatActivity{
         dbCorresponsal = new DbCorresponsal(this);
         return dbCorresponsal.validarCorreoCorresponsal(correo, contrasena);
     }
+
+    private boolean validarHabilitado(){
+        recibeDatos();
+        dbCorresponsal = new DbCorresponsal(this);
+        return dbCorresponsal.validarHabilitado(correo);
+    }
+
     private boolean validarCorreoBanco(){
         creaAdmin();
         recibeDatos();

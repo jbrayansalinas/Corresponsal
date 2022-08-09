@@ -18,10 +18,12 @@
             android:exported="false" />
         <activity
             android:name=".banco.ListadoCorresponsal"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.rojo.Corresponsal"/>
         <activity
             android:name=".banco.ListadoClientes"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.rojo.Corresponsal" />
         <activity
             android:name=".banco.ConsultarCorresponsal"
             android:exported="false" />
@@ -69,7 +71,8 @@
             android:exported="false" />
         <activity
             android:name=".corresponsal.CorresponsalHome"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.item.Corresponsal" />
         <activity
             android:name=".all.MainActivity"
             android:exported="true">

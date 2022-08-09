@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="@string/actualizarDatos"
-        android:id="@+id/actualizarCorresponsal"/>
+        android:id="@+id/actualizarDatos"/>
     <item android:title="@string/crearCliente"
-        android:id="@+id/actualizarClientes"/>
+        android:id="@+id/crarClientes"/>
     <item android:title="@string/cerrarSesion"
-        android:id="@+id/cerrarSesion"/>
+        android:id="@+id/salir"/>
 </menu>
