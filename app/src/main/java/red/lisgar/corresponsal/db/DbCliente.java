@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 import red.lisgar.corresponsal.entidades.Cliente;
 import red.lisgar.corresponsal.entidades.Corresponsal;
 
@@ -79,19 +81,89 @@ public class DbCliente extends DbHelper{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         Cliente cliente = null;
-        Cursor cursorCorresponsal;
+        Cursor cursorCliente;
 
-        cursorCorresponsal = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '" + cedula+"'", null);
+        cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '" + cedula+"'", null);
 
-        if (cursorCorresponsal.moveToFirst()){
+        if (cursorCliente.moveToFirst()){
             cliente = new Cliente();
-            cliente.setCuenta_cliente(cursorCorresponsal.getString(5));
-            cliente.setCvv_cliente(cursorCorresponsal.getString(6));
-            cliente.setFecha_exp_cliente(cursorCorresponsal.getString(7));
-            cliente.setNombre_cliente(cursorCorresponsal.getString(1));
-            cliente.setSaldo_cliente(cursorCorresponsal.getString(3));
+            cliente.setCuenta_cliente(cursorCliente.getString(5));
+            cliente.setCvv_cliente(cursorCliente.getString(6));
+            cliente.setFecha_exp_cliente(cursorCliente.getString(7));
+            cliente.setNombre_cliente(cursorCliente.getString(1));
+            cliente.setSaldo_cliente(cursorCliente.getString(3));
         }
-        cursorCorresponsal.close();
+        cursorCliente.close();
         return cliente;
+    }
+
+    public String mostrarSaldo(String cedula){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Cliente cliente = null;
+        Cursor cursorCliente;
+
+        cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '" + cedula+"'", null);
+
+        if (cursorCliente.moveToFirst()){
+            cliente = new Cliente();
+            cliente.setSaldo_cliente(cursorCliente.getString(3));
+        }
+        cursorCliente.close();
+        return cliente.getSaldo_cliente();
+    }
+
+    public boolean actualizarDatosCliente(String cedula, String nombre, String pin) {
+
+        boolean correcto = false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE " + TABLE_CLIENTE + " SET " +
+                    COLUMN_CLIENTE_NOMBRE + " = '"+nombre+"', " +
+                    COLUMN_CLIENTE_PIN + " = '"+pin+"' " +
+                    " WHERE " + COLUMN_CLIENTE_CEDULA + " = '"+cedula+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
+    public ArrayList<Cliente> listaCliente(){
+
+        ArrayList<Cliente> lista = new ArrayList<>();
+        Cursor cursorUsuarios;
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Cliente cliente ;
+
+            cursorUsuarios = db.rawQuery("select * from "+TABLE_CLIENTE , null);
+
+            if(cursorUsuarios.moveToFirst()){
+                do {
+                    cliente = new Cliente();
+                    cliente.setId_cliente(cursorUsuarios.getInt(0));
+                    cliente.setNombre_cliente(cursorUsuarios.getString(1));
+                    cliente.setCuenta_cliente(cursorUsuarios.getString(5));
+                    cliente.setCedula_cliente(cursorUsuarios.getString(2));
+                    cliente.setSaldo_cliente(cursorUsuarios.getString(3));
+                    lista.add(cliente);
+                }while (cursorUsuarios.moveToNext());
+            }else {
+                return null;
+            }
+        } catch (Exception ex){
+            ex.toString();
+        }
+        return lista;
     }
 }

@@ -76,7 +76,7 @@ public class CrearCuenta extends AppCompatActivity {
     String cuentaCliente;
     SharePreference sharePreference;
 
-    //Layout datos_corresponsal
+    //Layout datos_Cliente
     TextView tituloDtCliente;
     View lineaDtCliente;
     TextView primerCampoDtCliente;
@@ -242,7 +242,6 @@ public class CrearCuenta extends AppCompatActivity {
         btnconfirmarDtCliente.setBackground(getDrawable(R.drawable.btn_rojo));
         btncancelarDtCliente.setBackground(getDrawable(R.drawable.btn_transparente_roja));
         btncancelarDtCliente.setTextColor(parseColor("#ff5f58"));
-
     }
     private void layoutPin(){
         atras_Uno = findViewById(R.id.atras_Uno);

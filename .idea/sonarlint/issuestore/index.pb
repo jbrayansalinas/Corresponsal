@@ -7,10 +7,6 @@ A
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-v
-Fapp/src/main/java/red/lisgar/corresponsal/banco/ActualizarCliente.java,8\b\8b611774c276fb89e874e2c70a58896d3bb704f1
-z
-Japp/src/main/java/red/lisgar/corresponsal/banco/ConsultarCorresponsal.java,6\4\64c6f5baf8f2bf9bb14fbbb761e6006d2f413172
 z
 Japp/src/main/java/red/lisgar/corresponsal/corresponsal/ConsultarSaldo.java,2\7\27e328be4e63e317e109507f90dab693bc36c971
 p
@@ -19,8 +15,6 @@ t
 Dapp/src/main/java/red/lisgar/corresponsal/corresponsal/Deposito.java,8\2\8251fa5f45314dc6e5c43ee04e3a1ee93a981af0
 
 Qapp/src/main/java/red/lisgar/corresponsal/corresponsal/HistorialTrasacciones.java,d\6\d62131347c5c3655d3d133859d64720509187a62
-t
-Dapp/src/main/java/red/lisgar/corresponsal/banco/ListadoClientes.java,2\d\2d887c5a1550af733b281da34f404de4f50cb64b
 x
 Happ/src/main/java/red/lisgar/corresponsal/banco/ListadoCorresponsal.java,f\4\f41f7f59788818fbd7b2e918132e205e8f42cfd7
 h
@@ -31,8 +25,6 @@ w
 Gapp/src/main/java/red/lisgar/corresponsal/corresponsal/Transaccion.java,b\a\ba72dd3a0d80ef267005a908ef62f441c8c7cce5
 v
 Fapp/src/main/java/red/lisgar/corresponsal/entidades/Transacciones.java,3\f\3f8f041c1e88ab03a85d026456d884f796ad2dc0
-p
-@app/src/main/java/red/lisgar/corresponsal/entidades/Cliente.java,b\2\b292a21141fdc210cd886a4c1f4d01b32fb2f59c
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 j
@@ -41,3 +33,13 @@ x
 Happ/src/main/java/red/lisgar/corresponsal/corresponsal/Pago_tarjeta.java,8\e\8e89b5d1ef7f8b736540fd0fa15ae324e7df3916
 r
 Bapp/src/main/java/red/lisgar/corresponsal/all/SharePreference.java,c\b\cba59cf213f8e7fc39de306d1859226bf8dd602f
+o
+?app/src/main/java/red/lisgar/corresponsal/all/MainActivity.java,1\2\12af38318a91bccda1d8af1cc96cad78f1ba9fba
+u
+Eapp/src/main/java/red/lisgar/corresponsal/entidades/Corresponsal.java,a\2\a2fa195265390ab5cee4146e7455c739985ee13b
+j
+:app/src/main/java/red/lisgar/corresponsal/banco/Banco.java,2\d\2dd66694f4b3ccc73f73ff41e104d601c1ca9272
+|
+Lapp/src/main/java/red/lisgar/corresponsal/corresponsal/CorresponsalHome.java,1\a\1a3b6f962de31c93e9f335ad2fc9e1105fd70ec3
+m
+=app/src/main/java/red/lisgar/corresponsal/entidades/Home.java,c\5\c5c877084ab88bd263a8b0b84af98e54f8425141

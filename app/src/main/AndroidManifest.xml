@@ -34,7 +34,8 @@
             android:theme="@style/Theme.rojo.Corresponsal" />
         <activity
             android:name=".banco.ActualizarCliente"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.rojo.Corresponsal"/>
         <activity
             android:name=".banco.Banco"
             android:exported="false"

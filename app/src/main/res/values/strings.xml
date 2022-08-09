@@ -42,4 +42,5 @@
     <string name="crearCliente">Crear Cliente</string>
     <string name="ingresePin">Ingrese su Pin</string>
     <string name="ingreseNuevamentePin">Ingrese Nuevamente su Pin</string>
+    <string name="consultarCorresponsal">Consultar Corresponsal</string>
 </resources>

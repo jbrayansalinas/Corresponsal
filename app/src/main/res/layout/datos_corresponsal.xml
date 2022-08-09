@@ -28,6 +28,19 @@
         android:layout_marginTop="5dp"
         android:background="@color/bolita_roja" />
 
+    <ImageView
+        android:id="@+id/atras_DtCorresponsal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:longClickable="true"
+        android:src="@drawable/ic_back"
+        android:focusable="true" />
+
     <RelativeLayout
         android:id="@+id/relativeDatosCliente"
         android:layout_width="match_parent"
@@ -78,6 +91,7 @@
             android:textSize="20sp" />
 
     </RelativeLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnHabilitarDtCorresponsal"
         android:layout_width="146dp"

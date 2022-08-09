@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import red.lisgar.corresponsal.corresponsal.CorresponsalHome;
+import red.lisgar.corresponsal.entidades.Cliente;
 import red.lisgar.corresponsal.entidades.Corresponsal;
 
 public class DbCorresponsal extends DbHelper{
@@ -146,5 +147,47 @@ public class DbCorresponsal extends DbHelper{
         }
         cursorCorresponsal.close();
         return corresponsal.getSaldo_corresponsal();
+    }
+
+    public Corresponsal mostrarDatosCorresponsal(String nit){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Corresponsal corresponsal = null;
+        Cursor cursorCorresponsal;
+
+        cursorCorresponsal = db.rawQuery("SELECT * FROM " + TABLE_CORRESPONSAL + " WHERE " + COLUMN_CORRESPONSAL_NIT + " = '" + nit+"'", null);
+
+        if (cursorCorresponsal.moveToFirst()){
+            corresponsal = new Corresponsal();
+            corresponsal.setNombre_corresponsal(cursorCorresponsal.getString(1));
+            corresponsal.setNit_corresponsal(cursorCorresponsal.getString(2));
+            corresponsal.setSaldo_corresponsal(cursorCorresponsal.getString(6));
+            corresponsal.setCorreo_corresponsal(cursorCorresponsal.getString(3));
+            corresponsal.setEstado_corresponsal(cursorCorresponsal.getString(5));
+        }
+        cursorCorresponsal.close();
+        return corresponsal;
+    }
+
+    public boolean estadoCorresponsal(String estado, String nit) {
+
+        boolean correcto = false;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " +
+                    COLUMN_CORRESPONSAL_ESTADO + " = '"+estado+"'" +
+                    " WHERE " + COLUMN_CORRESPONSAL_NIT + " = '"+nit+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
     }
 }

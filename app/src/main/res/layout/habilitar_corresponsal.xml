@@ -5,8 +5,9 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/bolitas_rojas"
-        android:id="@+id/bolitas_rojasHbCorresponsal"/>
+        android:id="@+id/bolitas_rojasHbCorresponsal"
+        layout="@layout/bolitas_rojas" />
+
     <TextView
         android:id="@+id/tituloHbCorresponsal"
         android:layout_width="match_parent"
@@ -28,21 +29,33 @@
         android:layout_marginTop="5dp"
         android:background="@color/bolita_roja" />
 
-    <ImageView
-        android:id="@+id/imgHbCorresponsal"
-        android:layout_width="313dp"
-        android:layout_height="182dp"
+    <RelativeLayout
+        android:id="@+id/relativeHbCorresponsal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_below="@+id/tituloHbCorresponsal"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="45dp"
-        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/btn_transparente_roja"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtEstadoHbCorresponsal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnsalirHbCorresponsal"
         android:layout_width="118dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/imgHbCorresponsal"
+        android:layout_below="@+id/relativeHbCorresponsal"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="152dp"

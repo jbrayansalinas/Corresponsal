@@ -31,7 +31,9 @@ import red.lisgar.corresponsal.all.ActualizarCorresponsal;
 import red.lisgar.corresponsal.all.MainActivity;
 import red.lisgar.corresponsal.all.SharePreference;
 import red.lisgar.corresponsal.corresponsal.CorresponsalHome;
+import red.lisgar.corresponsal.db.DbCliente;
 import red.lisgar.corresponsal.db.DbCorresponsal;
+import red.lisgar.corresponsal.entidades.Cliente;
 import red.lisgar.corresponsal.entidades.Corresponsal;
 
 public class RegistrarCorresponsal extends AppCompatActivity {
@@ -71,6 +73,8 @@ public class RegistrarCorresponsal extends AppCompatActivity {
     //Cosas de la clase
     Corresponsal corresponsal;
     DbCorresponsal dbCorresponsal;
+    Cliente cliente;
+    DbCliente dbCliente;
     String nombre;
     String nit;
     String correo;
@@ -93,29 +97,37 @@ public class RegistrarCorresponsal extends AppCompatActivity {
                 if (validarObligatoriedad()) {
                     if (!validarNombre()) {
                         if (!validarNit()) {
-                            if (validarEmailFormato()) {
-                                if (!validarEmail()) {
-                                    setContentView(R.layout.datos_corresponsal);
-                                    layoutDtCorresponsal();
-                                    btnconfirmarDtCorresponsal.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            setContentView(R.layout.mensaje);
-                                            if (enviarDatos()) {
-                                                sharePreference = new SharePreference(RegistrarCorresponsal.this);
-                                                sharePreference.setSharedPreferences(nit);
-                                                mensajeOk();
-                                            } else {Toast.makeText(RegistrarCorresponsal.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
-                                        }
-                                    });
-                                    btncancelarDtCorresponsal.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            mensajeSalir();
-                                        }
-                                    });
-                                } else {Toast.makeText(RegistrarCorresponsal.this, "Correo no disponible", Toast.LENGTH_LONG).show();}
-                            } else {Toast.makeText(RegistrarCorresponsal.this, "Formato de correo incorrrecto", Toast.LENGTH_LONG).show();}
+                            if (!validarcedulaCliente()) {
+                                if (validarEmailFormato()) {
+                                    if (!validarEmail()) {
+                                        setContentView(R.layout.datos_corresponsal);
+                                        layoutDtCorresponsal();
+                                        btnconfirmarDtCorresponsal.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                setContentView(R.layout.mensaje);
+                                                if (enviarDatos()) {
+                                                    sharePreference = new SharePreference(RegistrarCorresponsal.this);
+                                                    sharePreference.setSharedPreferences(nit);
+                                                    mensajeOk();
+                                                } else {
+                                                    Toast.makeText(RegistrarCorresponsal.this, "Error al registrarse", Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
+                                        btncancelarDtCorresponsal.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                mensajeSalir();
+                                            }
+                                        });
+                                    } else {
+                                        Toast.makeText(RegistrarCorresponsal.this, "Correo no disponible", Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Toast.makeText(RegistrarCorresponsal.this, "Formato de correo incorrrecto", Toast.LENGTH_LONG).show();
+                                }
+                            }else {Toast.makeText(RegistrarCorresponsal.this, "Nit no disponible", Toast.LENGTH_LONG).show();}
                         } else {Toast.makeText(RegistrarCorresponsal.this, "Nit no disponible", Toast.LENGTH_LONG).show();}
                     }else {Toast.makeText(RegistrarCorresponsal.this, "Nombre no disponible", Toast.LENGTH_LONG).show();}
                 } else{Toast.makeText(RegistrarCorresponsal.this, "Rellene todos los campos.", Toast.LENGTH_LONG).show();}
@@ -268,6 +280,11 @@ public class RegistrarCorresponsal extends AppCompatActivity {
         recibeDatos();
         dbCorresponsal = new DbCorresponsal(this);
         return dbCorresponsal.validarNombre(nombre);
+    }
+    private boolean validarcedulaCliente(){
+        recibeDatos();
+        dbCliente = new DbCliente(this);
+        return dbCliente.validarCedulaCliente(nit);
     }
     private void escribirCorreo(){
         primerCampoCuatro.addTextChangedListener(new TextWatcher() {
