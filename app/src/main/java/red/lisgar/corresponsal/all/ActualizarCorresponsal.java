@@ -286,18 +286,6 @@ public class ActualizarCorresponsal extends AppCompatActivity {
         dbCorresponsal = new DbCorresponsal(this);
         dbCorresponsal.actualizarContrasena(contrasenaNuevaCorresponsal, correoCorresponsal);
     }
-
-
-
-
-
-
-
-
-
-
-
-
     private void toolbar(){
 
         findViewById(R.id.bolitas_azulesCuatro).setVisibility(View.INVISIBLE);
@@ -423,7 +411,6 @@ public class ActualizarCorresponsal extends AppCompatActivity {
         tituloDtCorresponsal.setText("Confirmar datos Correponsal");
         btnHabilitarDtCorresponsal.setVisibility(View.INVISIBLE);
     }
-
     private void toolbarDtCorresponsal(){
         recibeDatos();
         primerCampoDtCorresponsal.setText(nombre);

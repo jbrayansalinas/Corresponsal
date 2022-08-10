@@ -166,4 +166,116 @@ public class DbCliente extends DbHelper{
         }
         return lista;
     }
+    public boolean restarComision(String cedula) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        boolean correcto = false;
+        try {
+            db.execSQL("UPDATE " + TABLE_CLIENTE + " SET " + COLUMN_CLIENTE_SALDO + " = "+COLUMN_CLIENTE_SALDO+ " -10000 " + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '"+cedula+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+    public boolean sumarComision(String correo) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        boolean correcto = false;
+        try {
+            db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " + COLUMN_CORRESPONSAL_SALDO + " = "+COLUMN_CORRESPONSAL_SALDO+ " +10000 " + " WHERE " + COLUMN_CORRESPONSAL_CORREO + " = '"+correo+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+    public boolean validarSaldoSuficiente(String cedula, int saldo) {
+        int monto = saldo + 2000;
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CEDULA + " =? AND " + COLUMN_CLIENTE_SALDO +  " >= '"+monto+"'",new String[] {cedula});
+        if (cursorCliente.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+    public boolean restarRetiro(String cedula, int saldo) {
+        int monto = saldo + 2000;
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        boolean correcto = false;
+        try {
+            db.execSQL("UPDATE " + TABLE_CLIENTE + " SET " + COLUMN_CLIENTE_SALDO + " = "+COLUMN_CLIENTE_SALDO+ " -'"+monto+"'" + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '"+cedula+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+
+    public boolean validarTarjeta(String tarjeta) {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CUENTA + " =? ",new String[] {tarjeta});
+        if (cursorCliente.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+    public boolean validarcvv(String tarjeta, String cvv) {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CUENTA + " =? AND " + COLUMN_CLIENTE_CVV + " =?",new String[] {tarjeta, cvv});
+        if (cursorCliente.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+    public Cliente mostrarDatosClienteCuenta(String cuenta){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        Cliente cliente = null;
+        Cursor cursorCliente;
+
+        cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CUENTA + " = '" + cuenta+"'", null);
+
+        if (cursorCliente.moveToFirst()){
+            cliente = new Cliente();
+            cliente.setNombre_cliente(cursorCliente.getString(1));
+            cliente.setCedula_cliente(cursorCliente.getString(1));
+            cliente.setSaldo_cliente(cursorCliente.getString(3));
+            cliente.setPin_cliente(cursorCliente.getString(3));
+            cliente.setCuenta_cliente(cursorCliente.getString(5));
+            cliente.setCvv_cliente(cursorCliente.getString(6));
+            cliente.setFecha_exp_cliente(cursorCliente.getString(7));
+        }
+        cursorCliente.close();
+        return cliente;
+    }
+    public boolean validarNombre(String tarjeta, String nombre) {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CUENTA + " =? AND " + COLUMN_CLIENTE_NOMBRE + " =?",new String[] {tarjeta, nombre});
+        if (cursorCliente.getCount()>0)
+            return true;
+        else
+            return false;
+    }
 }

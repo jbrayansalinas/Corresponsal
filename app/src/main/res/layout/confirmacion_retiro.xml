@@ -49,11 +49,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="83dp"
         android:ems="10"
         android:padding="7dp"
-        android:textColor="@color/txt_normal" />
+        android:textColor="@color/txt_normal"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/texto2"
@@ -83,7 +84,8 @@
         android:layout_marginEnd="83dp"
         android:ems="10"
         android:padding="7dp"
-        android:textColor="@color/txt_normal" />
+        android:textColor="@color/txt_normal"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/texto3"
@@ -92,7 +94,7 @@
         android:layout_below="@+id/tituloConfirmacionRetiro"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="249dp"
+        android:layout_marginTop="269dp"
         android:text="@string/valorRetiro"
         android:textAlignment="viewStart"
         android:textColor="@color/titulo"
@@ -106,11 +108,10 @@
         android:layout_below="@+id/texto3"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="7dp"
         android:textAlignment="viewStart"
         android:textColor="@color/txt_normal"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:drawableLeftCompat="@drawable/ic_money" />
 
     <TextView
@@ -143,7 +144,6 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
         android:id="@+id/btnconfirmarRetiroConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"
@@ -154,6 +154,7 @@
         android:background="@drawable/btn_azul"
         android:text="@string/confirmar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
 

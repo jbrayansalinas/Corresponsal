@@ -51,6 +51,8 @@ public class CorresponsalHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_corresponsal);
+        Bundle extras = getIntent().getExtras();
+        cuenta = extras.getString("cuenta");
         layoutCorresponsal();
         toolbar();
         opciones();
@@ -93,8 +95,6 @@ public class CorresponsalHome extends AppCompatActivity {
     }
     private void toolbar(){
         dbCorresponsal = new DbCorresponsal(this);
-        Bundle extras = getIntent().getExtras();
-        cuenta = extras.getString("cuenta");
         corresponsal = new Corresponsal();
         corresponsal = dbCorresponsal.mostrarDatosCorresponsalHome(cuenta);
         nombreCorresponsal.setText(corresponsal.getNombre_corresponsal());
@@ -110,12 +110,12 @@ public class CorresponsalHome extends AppCompatActivity {
 
         ArrayList<Home> listaOp = new ArrayList<>();
 
-        listaOp.add(new Home(R.drawable.tarjeta, "Pago con tarjeta", Pago_tarjeta.class, ""));
-        listaOp.add(new Home(R.drawable.retiros, "Retiros", Retiros.class, ""));
-        listaOp.add(new Home(R.drawable.deposito, "Depositos", Deposito.class, ""));
-        listaOp.add(new Home(R.drawable.transferencias, "Transferencias", Transaccion.class, ""));
-        listaOp.add(new Home(R.drawable.historial_transaccional, "Historial Transaccional", HistorialTrasacciones.class, ""));
-        listaOp.add(new Home(R.drawable.consulta_saldo, "Consulta de saldo", ConsultarSaldo.class, ""));
+        listaOp.add(new Home(R.drawable.tarjeta, "Pago con tarjeta", Pago_tarjeta.class, "correo", cuenta));
+        listaOp.add(new Home(R.drawable.retiros, "Retiros", Retiros.class, "correo", cuenta));
+        listaOp.add(new Home(R.drawable.deposito, "Depositos", Deposito.class, "correo", cuenta));
+        listaOp.add(new Home(R.drawable.transferencias, "Transferencias", Transaccion.class, "correo", cuenta));
+        listaOp.add(new Home(R.drawable.historial_transaccional, "Historial Transaccional", HistorialTrasacciones.class, "correo", cuenta));
+        listaOp.add(new Home(R.drawable.consulta_saldo, "Consulta de saldo", ConsultarSaldo.class, "correo", cuenta));
 
         lista = new ListaHomeAdapter(listaOp, CorresponsalHome.this, "azul");
         recyclerCorresponsal.setAdapter(lista);
@@ -126,6 +126,7 @@ public class CorresponsalHome extends AppCompatActivity {
     private void crearCliente(){
         Intent intent = new Intent(this, CrearCuenta.class);
         intent.putExtra("vista", "corresponsal");
+        intent.putExtra("correo", cuenta);
         startActivity(intent);
     }
     private void actualizarCorresponsal(){

@@ -32,6 +32,7 @@ import red.lisgar.corresponsal.R;
 import red.lisgar.corresponsal.banco.Banco;
 import red.lisgar.corresponsal.banco.ConsultarCliente;
 import red.lisgar.corresponsal.banco.RegistrarCorresponsal;
+import red.lisgar.corresponsal.corresponsal.CorresponsalHome;
 import red.lisgar.corresponsal.db.DbCliente;
 import red.lisgar.corresponsal.db.DbCorresponsal;
 import red.lisgar.corresponsal.entidades.Cliente;
@@ -75,6 +76,7 @@ public class CrearCuenta extends AppCompatActivity {
     String fechaExp;
     String cuentaCliente;
     SharePreference sharePreference;
+    String correoCorresponsal;
 
     //Layout datos_Cliente
     TextView tituloDtCliente;
@@ -96,6 +98,7 @@ public class CrearCuenta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tres_txt);
         Bundle extras = getIntent().getExtras();
+        correoCorresponsal = extras.getString("correo");
         if (extras.getString("vista").equals("banco")) {
             setContentView(R.layout.tres_txt);
             layoutCrearCuenta();
@@ -134,6 +137,8 @@ public class CrearCuenta extends AppCompatActivity {
                                                                         @Override
                                                                         public void onClick(View v) {
                                                                             if (enviarDatosCliente()) {
+                                                                                Toast.makeText(CrearCuenta.this, "Se descontaron 10.000 por la creación", Toast.LENGTH_LONG).show();
+                                                                                restarComision();
                                                                                 sharePreference = new SharePreference(CrearCuenta.this);
                                                                                 sharePreference.setSharedPreferences(cedula);
                                                                             } else {Toast.makeText(CrearCuenta.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
@@ -179,11 +184,112 @@ public class CrearCuenta extends AppCompatActivity {
                 }
             });
 
-        }else if (extras.getString("vista").equals("corresponsal")){
+        }
+        else if (extras.getString("vista").equals("corresponsal")){
             layoutCrearCuenta();
+            toolbarAzul();
+            btnconfirmarTres.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (validarObligatoriedad()){
+                        if (!validarNombreCliente()){
+                            if (!validarCedulaCliente()){
+                                if (!validarCedulaNit()) {
+                                    if (validarSaldo()) {
+                                            setContentView(R.layout.uno_txt);
+                                            toolbarUnoAzul();
+                                            tituloUno.setText("Ingrese su Pin");
+                                            btnconfirmarUno.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {
+                                                    if (validarObligatoriedadPin()) {
+                                                        setContentView(R.layout.uno_txt);
+                                                        toolbarUnoAzul();
+                                                        tituloUno.setText("Ingrese nuevamente su Pin");
+                                                        btnconfirmarUno.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                if (validarObligatoriedadPin2()) {
+                                                                    if (confirmarPin()) {
+                                                                        setContentView(R.layout.datos_cliente);
+                                                                        layoutDtCLiente();
+                                                                        toolbarAzulDtCliente();
+                                                                        btnconfirmarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(View v) {
+                                                                                if (enviarDatosCliente()) {
+                                                                                    Toast.makeText(CrearCuenta.this, "Se descontaron 10.000 por la creación", Toast.LENGTH_LONG).show();
+                                                                                    restarComision();
+                                                                                    sumarComision();
+                                                                                    mensajeOk();
+                                                                                } else {Toast.makeText(CrearCuenta.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
+                                                                            }
+                                                                        });
+                                                                        btncancelarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                        @Override
+                                                                        public void onClick(View v) {
+                                                                            mensajeSalirAzul();
+                                                                        }
+                                                                    });
+                                                                    } else {Toast.makeText(CrearCuenta.this, "Pin incorrecto", Toast.LENGTH_LONG).show();}
+                                                                }else {Toast.makeText(CrearCuenta.this, "Ingrese un pin", Toast.LENGTH_LONG).show();}
+                                                            }
+                                                        });
+
+                                                    }else {Toast.makeText(CrearCuenta.this, "Ingrese un pin", Toast.LENGTH_LONG).show();}
+                                                }
+                                                    });
+                                                btncancelarUno.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                mensajeSalirAzul();
+                                                            }
+                                                        });
+                                        btncancelarUno.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                mensajeSalirAzul();
+                                            }
+                                        });
+                                    } else {Toast.makeText(CrearCuenta.this, "El saldo debe ser mayor a 10.000", Toast.LENGTH_LONG).show();}
+                                }else {Toast.makeText(CrearCuenta.this, "Cédula no disponible", Toast.LENGTH_LONG).show();}
+                            }else {Toast.makeText(CrearCuenta.this, "Cédula no disponible", Toast.LENGTH_LONG).show();}
+                        }else {Toast.makeText(CrearCuenta.this, "Nombre no disponible", Toast.LENGTH_LONG).show();}
+                    }else{Toast.makeText(CrearCuenta.this, "Rellene todos los campos.", Toast.LENGTH_LONG).show();}
+            }
+            });
+            btncancelarTres.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mensajeSalirAzul();
+                }
+            });
         }
     }
 
+
+
+    private void toolbarAzul(){
+        tituloTres.setText(R.string.crearCliente);
+        tercerCampoTresIcon2.setStartIconTintList(ColorStateList.valueOf(parseColor("#3399FF")));
+        tercerCampoTresIcon2.setEndIconTintList(ColorStateList.valueOf(parseColor("#3399FF")));
+        tercerCampoTres.setVisibility(View.INVISIBLE);
+        tercerCampoTres2.setVisibility(View.INVISIBLE);
+        segundoCampoTres.setInputType(InputType.TYPE_CLASS_NUMBER);
+        tercerCampoTresIcon.setInputType(InputType.TYPE_CLASS_NUMBER);
+        atras_tres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salir2();
+            }
+        });
+
+    }
+    private void toolbarUnoAzul(){
+        layoutPin();
+        btnconfirmarUno.setText("Aceptar");
+        atras_Uno.setVisibility(View.INVISIBLE);
+    }
     private void toolbarRojo(){
 
         findViewById(R.id.bolitas_azulesTres).setVisibility(View.INVISIBLE);
@@ -233,8 +339,15 @@ public class CrearCuenta extends AppCompatActivity {
         btncancelarUno.setTextColor(parseColor("#ff5f58"));
         btnconfirmarUno.setText("Aceptar");
     }
+    private void toolbarAzulDtCliente(){
+        recibeDatos();
+        primerCampoDtCliente.setText(nombreCliente);
+        segundoCampoDtCliente.setText(cedula);
+        tercerCampoDtCliente.setText(saldoCliente);
+        tituloDtCliente.setText("Confirmar datos Cliente");
+    }
     private void toolbarRojoDtCLiente(){
-
+        recibeDatos();
         findViewById(R.id.bolitas_azulesDtCliente).setVisibility(View.INVISIBLE);
 
         lineaDtCliente.setBackgroundColor(parseColor("#ff5f58"));
@@ -242,6 +355,10 @@ public class CrearCuenta extends AppCompatActivity {
         btnconfirmarDtCliente.setBackground(getDrawable(R.drawable.btn_rojo));
         btncancelarDtCliente.setBackground(getDrawable(R.drawable.btn_transparente_roja));
         btncancelarDtCliente.setTextColor(parseColor("#ff5f58"));
+        tituloDtCliente.setText("Confirmar datos Cliente");
+        primerCampoDtCliente.setText(nombreCliente);
+        segundoCampoDtCliente.setText(cedula);
+        tercerCampoDtCliente.setText(saldoCliente);
     }
     private void layoutPin(){
         atras_Uno = findViewById(R.id.atras_Uno);
@@ -273,7 +390,6 @@ public class CrearCuenta extends AppCompatActivity {
         tercerCampoTresIcon2.setHint("Saldo inicial");
     }
     private void layoutDtCLiente(){
-        recibeDatos();
         tituloDtCliente = findViewById(R.id.tituloDtCliente);
         lineaDtCliente = findViewById(R.id.lineaDtCliente);
         primerCampoDtCliente = findViewById(R.id.primerCampoDtCliente);
@@ -282,11 +398,6 @@ public class CrearCuenta extends AppCompatActivity {
         btncancelarDtCliente = findViewById(R.id.btncancelarDtCliente);
         btnconfirmarDtCliente = findViewById(R.id.btnconfirmarDtCliente);
         relativeDatosCliente = findViewById(R.id.relativeDatosCliente);
-
-        tituloDtCliente.setText("Confirmar datos Cliente");
-        primerCampoDtCliente.setText(nombreCliente);
-        segundoCampoDtCliente.setText(cedula);
-        tercerCampoDtCliente.setText(saldoCliente);
     }
     private void recibeDatos(){
         dbCorresponsal = new DbCorresponsal(this);
@@ -350,13 +461,13 @@ public class CrearCuenta extends AppCompatActivity {
     }
     private void mensaje(){
         setContentView(R.layout.mensaje);
-        findViewById(R.id.bolitas_azulesMensaje).setVisibility(View.INVISIBLE);
         tituloMensaje = findViewById(R.id.tituloMensaje);
         imgMensaje = findViewById(R.id.imgMensaje);
         btnsalirMensaje = findViewById(R.id.btnsalirMensaje);
     }
     private void mensajeSalir(){
         mensaje();
+        findViewById(R.id.bolitas_azulesMensaje).setVisibility(View.INVISIBLE);
         tituloMensaje.setText("Creación del cliente cancelada");
         imgMensaje.setImageResource(R.drawable.error);
         btnsalirMensaje.setBackgroundResource(R.drawable.btn_rojo);
@@ -367,8 +478,35 @@ public class CrearCuenta extends AppCompatActivity {
             }
         });
     }
+    private void mensajeSalirAzul(){
+        mensaje();
+        tituloMensaje.setText("Creación del cliente cancelada");
+        imgMensaje.setImageResource(R.drawable.error);
+        btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salir2();
+            }
+        });
+    }
+    private void mensajeOk(){
+        mensaje();
+        tituloMensaje.setText("Se creó el Cliente");
+        imgMensaje.setImageResource(R.drawable.bien);
+        btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salir2();
+            }
+        });
+    }
     private void salir(){
         Intent intent = new Intent(CrearCuenta.this, Banco.class);
+        startActivity(intent);
+    }
+    private void salir2(){
+        Intent intent = new Intent(CrearCuenta.this, CorresponsalHome.class);
+        intent.putExtra("cuenta", correoCorresponsal);
         startActivity(intent);
     }
     public String fecha(){
@@ -405,6 +543,15 @@ public class CrearCuenta extends AppCompatActivity {
         Intent intent = new Intent(CrearCuenta.this, ConsultarCliente.class);
         intent.putExtra("cedula", cedula);
         startActivity(intent);
+    }
+    private void restarComision(){
+        recibeDatos();
+        dbCliente = new DbCliente(this);
+        dbCliente.restarComision(cedula);
+    }
+    private void sumarComision(){
+        dbCliente = new DbCliente(this);
+        dbCliente.sumarComision(correoCorresponsal);
     }
     @Override
     public void onBackPressed() {

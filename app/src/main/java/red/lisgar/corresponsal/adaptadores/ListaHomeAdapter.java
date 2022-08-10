@@ -54,6 +54,7 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
         holder.tituloItemHome.setText(item.getTituloHome());
         holder.clase = item.getClase();
         holder.direccion = item.getDireccion();
+        holder.correo = item.getCorreo();
         if (fondo.equals("azul")){
             holder.fondo_itemHome.setCardBackgroundColor(Color.rgb(119, 183, 247));
         }else{
@@ -73,6 +74,7 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
         Object clase;
         CardView fondo_itemHome;
         String direccion;
+        String correo;
 
         public HomeViewHOlder(@NonNull View itemView) {
             super(itemView);
@@ -96,6 +98,11 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
                             intent.putExtra("ID", home.get(getAdapterPosition()).getId());
                             context.startActivity(intent);
                         break;
+                        case "correo":
+                            intent = new Intent(context, (Class<?>) clase);
+                            intent.putExtra("correo", correo);
+                            context.startActivity(intent);
+                            break;
                     }
                 }
             });

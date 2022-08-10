@@ -83,12 +83,12 @@ public class Banco extends AppCompatActivity {
 
         ArrayList<Home> listaOp = new ArrayList<>();
 
-        listaOp.add(new Home(R.drawable.crear_cliente, "Crear Cliente", CrearCuenta.class, "crearCuenta"));
-        listaOp.add(new Home(R.drawable.registrar_corresponsal, "Registrar Corresponsal", RegistrarCorresponsal.class, ""));
-        listaOp.add(new Home(R.drawable.consultar_cliente, "Consultar Clinete", BuscadorConsultarCliente.class, ""));
-        listaOp.add(new Home(R.drawable.consultar_corresponsal, "Consultar Corresponsal", ConsultarCorresponsal.class, ""));
-        listaOp.add(new Home(R.drawable.listado_clientes, "Listado Clientes", ListadoClientes.class, ""));
-        listaOp.add(new Home(R.drawable.listado_corresponsales, "Listados Corresponsales", ListadoCorresponsal.class, ""));
+        listaOp.add(new Home(R.drawable.crear_cliente, "Crear Cliente", CrearCuenta.class, "crearCuenta", ""));
+        listaOp.add(new Home(R.drawable.registrar_corresponsal, "Registrar Corresponsal", RegistrarCorresponsal.class, "", ""));
+        listaOp.add(new Home(R.drawable.consultar_cliente, "Consultar Clinete", BuscadorConsultarCliente.class, "", ""));
+        listaOp.add(new Home(R.drawable.consultar_corresponsal, "Consultar Corresponsal", ConsultarCorresponsal.class, "", ""));
+        listaOp.add(new Home(R.drawable.listado_clientes, "Listado Clientes", ListadoClientes.class, "", ""));
+        listaOp.add(new Home(R.drawable.listado_corresponsales, "Listados Corresponsales", ListadoCorresponsal.class, "", ""));
 
         lista = new ListaHomeAdapter(listaOp, Banco.this, "rojo");
         recyclerCorresponsal.setAdapter(lista);

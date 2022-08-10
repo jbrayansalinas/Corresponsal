@@ -87,7 +87,7 @@
         app:drawableLeftCompat="@drawable/ic_money" />
 
     <TextView
-        android:id="@+id/numeroCuotasConfirmacion"
+        android:id="@+id/text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tituloConfirmacionTarjeta"
@@ -99,6 +99,19 @@
         android:textColor="@color/titulo"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/numeroCuotasConfirmacion"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tituloConfirmacionTarjeta"
+        android:layout_marginTop="243dp"
+        android:layout_marginEnd="-155dp"
+        android:layout_toStartOf="@+id/text4"
+        android:ems="10"
+        android:padding="7dp"
+        android:textColor="@color/txt_normal"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/texto4"
@@ -156,7 +169,6 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
         android:id="@+id/btnconfirmarTarjetaConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"
@@ -167,6 +179,7 @@
         android:background="@drawable/btn_azul"
         android:text="@string/confirmar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
 

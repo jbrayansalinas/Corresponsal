@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:textColor="@color/bolita_azul"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -22,22 +22,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nombreCorresponsalDos"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_money"
+        app:drawableTint="@color/transparente"/>
 
     <TextView
         android:id="@+id/cuentaCorresponsalDos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/saldoCorresponsalDos"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_numeral"
+        app:drawableTint="@color/transparente"  />
 
     <ImageView
         android:id="@+id/atras_Dos"
@@ -72,44 +76,56 @@
         android:layout_marginTop="5dp"
         android:background="@color/bolita_azul" />
 
-    <EditText
-        android:id="@+id/primerCampoDos"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/primerCampoDos2"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="205dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/txt_login"
+        android:layout_marginEnd="50dp"
         android:ems="10"
-        android:inputType="number"
-        android:padding="7dp"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
 
-    <EditText
-        android:id="@+id/segundoCampoDos"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/primerCampoDos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/segundoCampoDos2"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/primerCampoDos"
+        android:layout_below="@+id/primerCampoDos2"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="61dp"
-        android:background="@drawable/txt_login"
-        android:drawableLeft="@drawable/ic_money"
+        android:layout_marginEnd="50dp"
         android:ems="10"
-        android:inputType="number"
-        android:padding="7dp"
+        app:startIconDrawable="@drawable/ic_money"
+        app:startIconTint="@color/bolita_azul"
         android:textColor="@color/txt_normal"
-        android:textColorHint="@color/txt_hint" />
+        android:textColorHint="@color/txt_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/segundoCampoDos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_login"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnconfirmarDos"
+        android:id="@+id/btncancelarDos"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/segundoCampoDos"
+        android:layout_below="@+id/segundoCampoDos2"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/btn_transparente"
         android:text="@string/cancelar"
@@ -119,18 +135,25 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
-        android:id="@+id/btncancelarDos"
+        android:id="@+id/btnconfirmarDos"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/segundoCampoDos"
+        android:layout_below="@+id/segundoCampoDos2"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/btn_azul"
         android:text="@string/confirmar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
+
+    <include
+        android:id="@+id/alertaDos"
+        layout="@layout/alert_mensaje"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

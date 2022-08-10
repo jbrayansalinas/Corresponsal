@@ -7,15 +7,25 @@ public class Home {
     private Object clase;
     private String tituloHome;
     private String direccion;
+    private String correo;
 
 
 
-    public Home(int imgHome, String tituloHome, Object clase, String direccion) {
+    public Home(int imgHome, String tituloHome, Object clase, String direccion, String correo) {
         this.ImgHome = imgHome;
         this.tituloHome = tituloHome;
         this.clase = clase;
         this.direccion = direccion;
+        this.correo = correo;
     }
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     public String getTituloHome() {
         return tituloHome;
     }
