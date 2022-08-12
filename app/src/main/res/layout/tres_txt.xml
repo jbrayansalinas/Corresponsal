@@ -15,10 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:textColor="@color/bolita_azul"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -26,22 +26,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nombreCorresponsalTres"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_money"
+        app:drawableTint="@color/transparente"  />
 
     <TextView
         android:id="@+id/cuentaCorresponsalTres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/saldoCorresponsalTres"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/bolita_azul"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_numeral"
+        app:drawableTint="@color/transparente"/>
 
     <ImageView
         android:id="@+id/atras_tres"

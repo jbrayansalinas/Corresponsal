@@ -30,6 +30,7 @@
     <string name="confirmacionLargaRetiro">Se realizará un retiro al número de cuenta:</string>
     <string name="valorRetiro">Por un valor de:</string>
     <string name="recordatorioRetiro">Recuerde que esta acción tiene un cargo de 2.000 directamente en su cuenta WPOSS.</string>
+    <string name="recordatorioDeposito">Recuerde que por está acción se le descontarán 1.000 directamente de su depósito</string>
     <string name="confirmacioNombreDeposito">Desea realizar el deposito a:</string>
     <string name="fecha">FECHA EXPEDICIÓN</string>
     <string name="consultarcliente">Consultar Cliente</string>

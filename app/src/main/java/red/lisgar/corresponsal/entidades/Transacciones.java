@@ -4,7 +4,7 @@ public class Transacciones {
 
     private int id_transaccion;
     private int id_cliente;
-    private int id_corresponsal;
+    private String id_corresponsal;
     private int id_emisor;
     private String tipo_transaccion;
     private String fecha_transaccion;
@@ -25,11 +25,11 @@ public class Transacciones {
         this.id_cliente = id_cliente;
     }
 
-    public int getId_corresponsal() {
+    public String getId_corresponsal() {
         return id_corresponsal;
     }
 
-    public void setId_corresponsal(int id_corresponsal) {
+    public void setId_corresponsal(String id_corresponsal) {
         this.id_corresponsal = id_corresponsal;
     }
 

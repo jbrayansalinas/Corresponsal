@@ -26,16 +26,19 @@ import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import red.lisgar.corresponsal.R;
 import red.lisgar.corresponsal.all.CrearCuenta;
+import red.lisgar.corresponsal.banco.ConsultarCliente;
 import red.lisgar.corresponsal.db.DbCliente;
 import red.lisgar.corresponsal.db.DbCorresponsal;
 import red.lisgar.corresponsal.entidades.Cliente;
 import red.lisgar.corresponsal.entidades.Corresponsal;
+import red.lisgar.corresponsal.entidades.Transacciones;
 
 public class Pago_tarjeta extends AppCompatActivity {
 
@@ -80,6 +83,7 @@ public class Pago_tarjeta extends AppCompatActivity {
     String correoCorresponsal;
     DbCorresponsal dbCorresponsal;
     Corresponsal corresponsal;
+    Transacciones transacciones;
     DbCliente dbCliente;
     Cliente cliente;
     String numtarjeta;
@@ -114,20 +118,25 @@ public class Pago_tarjeta extends AppCompatActivity {
                                             btnconfirmarTarjetaConfirmacion.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View v) {
-                                                    setContentView(R.layout.uno_txt);
-                                                    layoutPin();
-                                                    btnconfirmarUno.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            mensajeOk();
-                                                        }
-                                                    });
-                                                    btncancelarUno.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {
-                                                            mensajeSalir();
-                                                        }
-                                                    });
+                                                        setContentView(R.layout.uno_txt);
+                                                        layoutPin();
+                                                        btnconfirmarUno.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                if (validarPin()) {
+                                                                    restarComision();
+                                                                    sumarComision();
+                                                                    guardarTransaccion();
+                                                                    mensajeOk();
+                                                                }else{Toast.makeText(Pago_tarjeta.this, "Pin incorrecto", Toast.LENGTH_LONG).show();}
+                                                            }
+                                                        });
+                                                        btncancelarUno.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                mensajeSalir();
+                                                            }
+                                                        });
                                                 }
                                             });
                                             btncancelarTarjetaConfirmacion.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +145,7 @@ public class Pago_tarjeta extends AppCompatActivity {
                                         mensajeSalir();
                                     }
                                 });
-                                    }else{Toast.makeText(Pago_tarjeta.this, "Saldo insuficiente", Toast.LENGTH_LONG).show();}
+                                    }else{Toast.makeText(Pago_tarjeta.this, "Saldo inválido", Toast.LENGTH_LONG).show();}
                                 }else{Toast.makeText(Pago_tarjeta.this, "Nombre incorrecto", Toast.LENGTH_LONG).show();}
                             }else{Toast.makeText(Pago_tarjeta.this, "Fecha incorrecta", Toast.LENGTH_LONG).show();}
                         }else{Toast.makeText(Pago_tarjeta.this, "Cvv incorrecto", Toast.LENGTH_LONG).show();}
@@ -182,6 +191,15 @@ public class Pago_tarjeta extends AppCompatActivity {
         numeroTarjetaConfirmacion = findViewById(R.id.numeroTarjetaConfirmacion);
         btnconfirmarTarjetaConfirmacion = findViewById(R.id.btnconfirmarTarjetaConfirmacion);
         btncancelarTarjetaConfirmacion = findViewById(R.id.btncancelarTarjetaConfirmacion);
+
+        recibeDatos();
+        spinnerselected();
+        cliente = dbCliente.mostrarDatosClienteCuenta(numtarjeta);
+        nombreConfirmacionTarjeta.setText(cliente.getNombre_cliente());
+        pagoConfirmacionTarjeta.setText(monto);
+        numeroCuotasConfirmacion.setText(String.valueOf(cuotas));
+        numeroTarjetaConfirmacion.setText(cliente.getCuenta_cliente());
+        nombreTarjeta();
     }
     private void layoutPin(){
         atras_Uno = findViewById(R.id.atras_Uno);
@@ -192,6 +210,7 @@ public class Pago_tarjeta extends AppCompatActivity {
         btnconfirmarUno = findViewById(R.id.btnconfirmarUno);
 
         primerCampoUno.setHint("PIN");
+        tituloUno.setText("Confirmar PIN");
     }
     private void toolbarTarjeta(){
         dbCorresponsal = new DbCorresponsal(this);
@@ -276,6 +295,15 @@ public class Pago_tarjeta extends AppCompatActivity {
 
 
     }
+    private boolean validarPin(){
+        recibeDatos();
+        cliente = dbCliente.mostrarDatosClienteCuenta(numtarjeta);
+        String pinCleinte = cliente.getPin_cliente();
+        String pinLayout = primerCampoUno.getText().toString().trim();
+        if (pinCleinte.equals(pinLayout)){
+            return true;
+        }else return false;
+    }
     private boolean validarTarjeta(){
         recibeDatos();
         dbCliente = new DbCliente(this);
@@ -294,12 +322,32 @@ public class Pago_tarjeta extends AppCompatActivity {
     private boolean validarSaldoTarjeta(){
         recibeDatos();
         cliente = dbCliente.mostrarDatosClienteCuenta(numtarjeta);
-        String saldoCliente = cliente.getSaldo_cliente();
-        if (parseInt(saldoCliente)>=parseInt(monto)){
-            if (parseInt(saldoCliente) >= 10000 && parseInt(saldoCliente) <= 1000000) {
-                return true;
-            }return false;
+        int saldoCliente = parseInt(cliente.getSaldo_cliente());
+        if (saldoCliente>=parseInt(monto)){
+            if (parseInt(monto) >= 10000 && 1000000 >= parseInt(monto)){
+                    return true;
+            }else return false;
         }else return false;
+    }
+    private void nombreTarjeta(){
+        recibeDatos();
+        String nombreTar = numtarjeta.substring(0,1);
+        switch (nombreTar){
+            case "3":
+                nombreTarjetaConfirmacion.setText("AMERICAN EXPRESS");
+                break;
+            case "4":
+                nombreTarjetaConfirmacion.setText("VISA");
+                break;
+            case "5":
+                nombreTarjetaConfirmacion.setText("MASTERCARD");
+                break;
+            case "6":
+                nombreTarjetaConfirmacion.setText("UNIONPAY");
+                break;
+            default:
+                Toast.makeText(Pago_tarjeta.this, "número de tarjeta no valido", Toast.LENGTH_LONG).show();
+        }
     }
     private boolean validarfecha(){
         recibeDatos();
@@ -312,6 +360,32 @@ public class Pago_tarjeta extends AppCompatActivity {
                 return true;
             } else return false;
         } else return false;
+    }
+    private void restarComision(){
+        recibeDatos();
+        cliente = dbCliente.mostrarDatosClienteCuenta(numtarjeta);
+        dbCliente = new DbCliente(this);
+        dbCliente.restarTransferenciaCliente(cliente.getCedula_cliente(), monto);
+    }
+    private void sumarComision(){
+        recibeDatos();
+        dbCliente = new DbCliente(this);
+        dbCliente.sumarTransferenciaCorresponsal(correoCorresponsal, Integer.parseInt(monto));
+    }
+    private void guardarTransaccion(){
+        recibeDatos();
+        dbCliente = new DbCliente(this);
+        cliente = dbCliente.mostrarDatosClienteCuenta(numtarjeta);
+        transacciones = new Transacciones();
+        transacciones.setId_cliente(Integer.parseInt(cliente.getCedula_cliente()));
+        transacciones.setMonto_transaccion(monto);
+        transacciones.setId_corresponsal(correoCorresponsal);
+        transacciones.setFecha_transaccion(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+        transacciones.setTipo_transaccion("PAGO CON TARJETA");
+
+
+        dbCliente.insertarTransaccion(transacciones);
+
     }
     private void salir(){
         Intent intent = new Intent(Pago_tarjeta.this, CorresponsalHome.class);

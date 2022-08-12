@@ -53,6 +53,7 @@
         android:layout_marginEnd="83dp"
         android:ems="10"
         android:padding="7dp"
+        android:textSize="20sp"
         android:textColor="@color/txt_normal" />
 
     <TextView
@@ -83,6 +84,7 @@
         android:layout_marginEnd="83dp"
         android:ems="10"
         android:padding="7dp"
+        android:textSize="20sp"
         android:textColor="@color/txt_normal"
         app:drawableLeftCompat="@drawable/ic_money" />
 
@@ -137,8 +139,7 @@
         android:layout_marginTop="1dp"
         android:textAlignment="viewStart"
         android:textColor="@color/txt_normal"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/nombreTarjetaConfirmacion"
@@ -150,8 +151,7 @@
         android:layout_marginTop="1dp"
         android:textAlignment="viewStart"
         android:textColor="@color/txt_normal"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarTarjetaConfirmacion"

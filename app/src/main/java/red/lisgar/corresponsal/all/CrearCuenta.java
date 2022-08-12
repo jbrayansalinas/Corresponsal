@@ -139,10 +139,8 @@ public class CrearCuenta extends AppCompatActivity {
                                                                             if (enviarDatosCliente()) {
                                                                                 Toast.makeText(CrearCuenta.this, "Se descontaron 10.000 por la creación", Toast.LENGTH_LONG).show();
                                                                                 restarComision();
-                                                                                sharePreference = new SharePreference(CrearCuenta.this);
-                                                                                sharePreference.setSharedPreferences(cedula);
+                                                                                irConsultarCliente();
                                                                             } else {Toast.makeText(CrearCuenta.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
-                                                                            irConsultarCliente();
                                                                         }
                                                                     });
                                                                     btncancelarDtCliente.setOnClickListener(new View.OnClickListener() {
@@ -547,11 +545,11 @@ public class CrearCuenta extends AppCompatActivity {
     private void restarComision(){
         recibeDatos();
         dbCliente = new DbCliente(this);
-        dbCliente.restarComision(cedula);
+        dbCliente.restarTransferenciaCliente(cedula, String.valueOf(10000));
     }
     private void sumarComision(){
         dbCliente = new DbCliente(this);
-        dbCliente.sumarComision(correoCorresponsal);
+        dbCliente.sumarTransferenciaCorresponsal(correoCorresponsal, 10000);
     }
     @Override
     public void onBackPressed() {

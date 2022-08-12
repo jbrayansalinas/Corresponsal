@@ -53,7 +53,8 @@
         android:layout_marginEnd="83dp"
         android:ems="10"
         android:padding="7dp"
-        android:textColor="@color/txt_normal" />
+        android:textColor="@color/txt_normal"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/texto2"
@@ -83,7 +84,8 @@
         android:layout_marginEnd="83dp"
         android:ems="10"
         android:padding="7dp"
-        android:textColor="@color/txt_normal" />
+        android:textColor="@color/txt_normal"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/texto3"
@@ -110,14 +112,27 @@
         android:textAlignment="viewStart"
         android:textColor="@color/txt_normal"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:drawableLeftCompat="@drawable/ic_money" />
+
+    <TextView
+        android:id="@+id/texto4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pagoDepositoConfirmacion"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/recordatorioDeposito"
+        android:textAlignment="viewStart"
+        android:textColor="@color/txt_hint"
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarDepositoConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/pagoDepositoConfirmacion"
+        android:layout_below="@+id/texto4"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
@@ -129,17 +144,17 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:textColor="@color/white"
         android:id="@+id/btnconfirmarDepositoConfirmacion"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/pagoDepositoConfirmacion"
+        android:layout_below="@+id/texto4"
         android:layout_alignParentStart="true"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/btn_azul"
         android:text="@string/confirmar"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
 

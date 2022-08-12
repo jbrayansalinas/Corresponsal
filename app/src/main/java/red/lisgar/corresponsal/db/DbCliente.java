@@ -4,13 +4,16 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import red.lisgar.corresponsal.corresponsal.Retiros;
 import red.lisgar.corresponsal.entidades.Cliente;
 import red.lisgar.corresponsal.entidades.Corresponsal;
+import red.lisgar.corresponsal.entidades.Transacciones;
 
 public class DbCliente extends DbHelper{
     Context context;
@@ -91,6 +94,7 @@ public class DbCliente extends DbHelper{
             cliente.setCvv_cliente(cursorCliente.getString(6));
             cliente.setFecha_exp_cliente(cursorCliente.getString(7));
             cliente.setNombre_cliente(cursorCliente.getString(1));
+            cliente.setId_cliente(cursorCliente.getInt(0));
             cliente.setSaldo_cliente(cursorCliente.getString(3));
         }
         cursorCliente.close();
@@ -166,13 +170,13 @@ public class DbCliente extends DbHelper{
         }
         return lista;
     }
-    public boolean restarComision(String cedula) {
+    public boolean sumarTransferenciaCorresponsal(String correo, int saldo) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         boolean correcto = false;
         try {
-            db.execSQL("UPDATE " + TABLE_CLIENTE + " SET " + COLUMN_CLIENTE_SALDO + " = "+COLUMN_CLIENTE_SALDO+ " -10000 " + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '"+cedula+"'");
+            db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " + COLUMN_CORRESPONSAL_SALDO + " = "+COLUMN_CORRESPONSAL_SALDO+ " + '"+saldo+"'" + " WHERE " + COLUMN_CORRESPONSAL_CORREO + " = '"+correo+"'");
             correcto = true;
         } catch (Exception ex){
             ex.toString();
@@ -183,13 +187,13 @@ public class DbCliente extends DbHelper{
 
         return correcto;
     }
-    public boolean sumarComision(String correo) {
+    public boolean restarTransferenciaCliente(String cedula, String saldo) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         boolean correcto = false;
         try {
-            db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " + COLUMN_CORRESPONSAL_SALDO + " = "+COLUMN_CORRESPONSAL_SALDO+ " +10000 " + " WHERE " + COLUMN_CORRESPONSAL_CORREO + " = '"+correo+"'");
+            db.execSQL("UPDATE " + TABLE_CLIENTE + " SET " + COLUMN_CLIENTE_SALDO + " = "+COLUMN_CLIENTE_SALDO+ " - '"+saldo+"'" + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '"+cedula+"'");
             correcto = true;
         } catch (Exception ex){
             ex.toString();
@@ -200,24 +204,30 @@ public class DbCliente extends DbHelper{
 
         return correcto;
     }
-    public boolean validarSaldoSuficiente(String cedula, int saldo) {
-        int monto = saldo + 2000;
-        DbHelper dbHelper = new DbHelper(context);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursorCliente = db.rawQuery("SELECT * FROM " + TABLE_CLIENTE + " WHERE " + COLUMN_CLIENTE_CEDULA + " =? AND " + COLUMN_CLIENTE_SALDO +  " >= '"+monto+"'",new String[] {cedula});
-        if (cursorCliente.getCount()>0)
-            return true;
-        else
-            return false;
-    }
-    public boolean restarRetiro(String cedula, int saldo) {
-        int monto = saldo + 2000;
+    public boolean sumarTransferenciaCliente(String cedula, int saldo) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         boolean correcto = false;
         try {
-            db.execSQL("UPDATE " + TABLE_CLIENTE + " SET " + COLUMN_CLIENTE_SALDO + " = "+COLUMN_CLIENTE_SALDO+ " -'"+monto+"'" + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '"+cedula+"'");
+            db.execSQL("UPDATE " + TABLE_CLIENTE + " SET " + COLUMN_CLIENTE_SALDO + " = "+COLUMN_CLIENTE_SALDO+ " + '"+saldo+"'" + " WHERE " + COLUMN_CLIENTE_CEDULA + " = '"+cedula+"'");
+            correcto = true;
+        } catch (Exception ex){
+            ex.toString();
+            correcto = false;
+        } finally {
+            db.close();
+        }
+
+        return correcto;
+    }
+    public boolean restarTransferenciaCorresponsal(String correo, int saldo) {
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        boolean correcto = false;
+        try {
+            db.execSQL("UPDATE " + TABLE_CORRESPONSAL + " SET " + COLUMN_CORRESPONSAL_SALDO + " = "+COLUMN_CORRESPONSAL_SALDO+ " - '"+saldo+"'" + " WHERE " + COLUMN_CORRESPONSAL_CORREO + " = '"+correo+"'");
             correcto = true;
         } catch (Exception ex){
             ex.toString();
@@ -259,9 +269,9 @@ public class DbCliente extends DbHelper{
         if (cursorCliente.moveToFirst()){
             cliente = new Cliente();
             cliente.setNombre_cliente(cursorCliente.getString(1));
-            cliente.setCedula_cliente(cursorCliente.getString(1));
+            cliente.setCedula_cliente(cursorCliente.getString(2));
             cliente.setSaldo_cliente(cursorCliente.getString(3));
-            cliente.setPin_cliente(cursorCliente.getString(3));
+            cliente.setPin_cliente(cursorCliente.getString(4));
             cliente.setCuenta_cliente(cursorCliente.getString(5));
             cliente.setCvv_cliente(cursorCliente.getString(6));
             cliente.setFecha_exp_cliente(cursorCliente.getString(7));
@@ -277,5 +287,27 @@ public class DbCliente extends DbHelper{
             return true;
         else
             return false;
+    }
+    public long insertarTransaccion(Transacciones transaccion) {
+
+        long id = 0;
+        Boolean respuesta;
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_TRANSACCIONES_ID_CLIENTE, transaccion.getId_cliente());
+            values.put(COLUMN_TRANSACCIONES_ID_CORRESPONSAL, transaccion.getId_corresponsal());
+            values.put(COLUMN_TRANSACCIONES_FECHA, transaccion.getFecha_transaccion());
+            values.put(COLUMN_TRANSACCIONES_TIPO, transaccion.getTipo_transaccion());
+            values.put(COLUMN_TRANSACCIONES_MONTO, transaccion.getMonto_transaccion());
+
+            id = db.insert(TABLE_TRANSACCIONES, null, values);
+        } catch (Exception ex) {
+            ex.toString();
+        }
+        return id;
+
     }
 }

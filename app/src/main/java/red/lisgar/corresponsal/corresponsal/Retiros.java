@@ -21,12 +21,16 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import red.lisgar.corresponsal.R;
 import red.lisgar.corresponsal.all.CrearCuenta;
 import red.lisgar.corresponsal.db.DbCliente;
 import red.lisgar.corresponsal.db.DbCorresponsal;
 import red.lisgar.corresponsal.entidades.Cliente;
 import red.lisgar.corresponsal.entidades.Corresponsal;
+import red.lisgar.corresponsal.entidades.Transacciones;
 
 public class Retiros extends AppCompatActivity {
 
@@ -46,6 +50,7 @@ public class Retiros extends AppCompatActivity {
     //Cosas de la clase
     DbCorresponsal dbCorresponsal;
     Corresponsal corresponsal;
+    Transacciones transacciones;
     DbCliente dbCliente;
     Cliente cliente;
     String correoCorresponsal;
@@ -98,6 +103,7 @@ public class Retiros extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         realizaRetiro();
+                                        guardarTransaccion();
                                         mensajeOk();
                                     }
                                 });
@@ -203,7 +209,23 @@ public class Retiros extends AppCompatActivity {
         recibeDatos();
         dbCliente = new DbCliente(this);
         monto2 = Integer.parseInt(monto);
-        return dbCliente.restarRetiro(cedula, monto2);
+        int monto3 = monto2 + 2000;
+        if (dbCliente.sumarTransferenciaCorresponsal(correoCorresponsal, 2000)){
+            return dbCliente.restarTransferenciaCliente(cedula, String.valueOf(monto3));
+        }else return false;
+    }
+    private void guardarTransaccion(){
+        recibeDatos();
+        dbCliente = new DbCliente(this);
+        transacciones = new Transacciones();
+        transacciones.setId_cliente(Integer.parseInt(cedula));
+        transacciones.setMonto_transaccion(monto);
+        transacciones.setId_corresponsal(correoCorresponsal);
+        transacciones.setFecha_transaccion(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+        transacciones.setTipo_transaccion("RETIRO");
+
+        dbCliente.insertarTransaccion(transacciones);
+
     }
     private boolean validarCedulaCliente(){
         recibeDatos();
@@ -213,8 +235,11 @@ public class Retiros extends AppCompatActivity {
     private boolean validarSaldoSuficiente(){
         recibeDatos();
         dbCliente = new DbCliente(this);
-        monto2 = Integer.parseInt(monto);
-        return dbCliente.validarSaldoSuficiente(cedula, monto2);
+        cliente = new Cliente();
+        cliente = dbCliente.mostrarDatosCliente(cedula);
+        if(Integer.parseInt(cliente.getSaldo_cliente()) >= Integer.parseInt(monto)){
+            return true;
+        }else return false;
     }
     private boolean validarObligatoriedad(){
         recibeDatos();

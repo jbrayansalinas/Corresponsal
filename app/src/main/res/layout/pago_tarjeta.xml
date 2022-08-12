@@ -15,7 +15,7 @@
         android:layout_marginTop="25dp"
         android:textColor="@color/bolita_azul"
         android:textSize="24sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/saldoCorresponsalTarjeta"
@@ -28,7 +28,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:drawableLeftCompat="@drawable/ic_money"
-        app:drawableTint="@color/transparente"/>
+        app:drawableTint="@color/transparente"  />
 
     <TextView
         android:id="@+id/cuentaCorresponsalTarjeta"
@@ -41,7 +41,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:drawableLeftCompat="@drawable/ic_numeral"
-        app:drawableTint="@color/transparente"  />
+        app:drawableTint="@color/transparente" />
 
     <ImageView
         android:id="@+id/atras_tresTarjeta"
@@ -97,14 +97,14 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="200dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="59dp"
         android:background="@drawable/txt_login"
         android:ems="10"
         android:hint="@string/numeroTarjeta"
-        android:text="4123452542106727"
         android:inputType="number"
         android:maxLength="16"
         android:padding="7dp"
+        android:text="5123459026923513"
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
 
@@ -119,10 +119,10 @@
         android:background="@drawable/azul"
         android:ems="10"
         android:hint="@string/cvv"
-        android:text="126"
         android:inputType="number"
         android:maxLength="3"
         android:padding="7dp"
+        android:text="488"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -140,8 +140,8 @@
         android:hint="@string/mm"
         android:inputType="number"
         android:maxLength="2"
-        android:text="08"
         android:padding="7dp"
+        android:text="08"
         android:textAlignment="center"
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
@@ -177,8 +177,8 @@
         android:ems="10"
         android:hint="@string/nombreCliente"
         android:inputType="text|textCapCharacters"
-        android:text="JBRAYAN"
         android:padding="7dp"
+        android:text="BRAYAN"
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
 
@@ -196,7 +196,7 @@
         android:hint="@string/valorPagar"
         android:inputType="number"
         android:padding="7dp"
-        android:text="3000000"
+        android:text="30000"
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
 
