@@ -420,4 +420,8 @@ public class Pago_tarjeta extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        /*super.onBackPressed();*/
+    }
 }

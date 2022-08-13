@@ -250,4 +250,8 @@ public class Deposito extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        /*super.onBackPressed();*/
+    }
 }

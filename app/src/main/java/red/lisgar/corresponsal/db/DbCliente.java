@@ -96,6 +96,7 @@ public class DbCliente extends DbHelper{
             cliente.setNombre_cliente(cursorCliente.getString(1));
             cliente.setId_cliente(cursorCliente.getInt(0));
             cliente.setSaldo_cliente(cursorCliente.getString(3));
+            cliente.setPin_cliente(cursorCliente.getString(4));
         }
         cursorCliente.close();
         return cliente;
@@ -204,7 +205,7 @@ public class DbCliente extends DbHelper{
 
         return correcto;
     }
-    public boolean sumarTransferenciaCliente(String cedula, int saldo) {
+    public boolean sumarTransferenciaCliente(String cedula, String saldo) {
 
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -309,5 +310,36 @@ public class DbCliente extends DbHelper{
         }
         return id;
 
+    }
+    public ArrayList<Transacciones> listaTransacciones(){
+
+        ArrayList<Transacciones> lista = new ArrayList<>();
+        Cursor cursorTransacciones;
+
+        try {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Transacciones transacciones ;
+
+            cursorTransacciones = db.rawQuery("select * from "+TABLE_TRANSACCIONES , null);
+
+            if(cursorTransacciones.moveToFirst()){
+                do {
+                    transacciones = new Transacciones();
+                    transacciones.setId_transaccion(cursorTransacciones.getInt(0));
+                    transacciones.setId_cliente(cursorTransacciones.getInt(1));
+                    transacciones.setId_corresponsal(cursorTransacciones.getString(2));
+                    transacciones.setTipo_transaccion(cursorTransacciones.getString(3));
+                    transacciones.setFecha_transaccion(cursorTransacciones.getString(4));
+                    transacciones.setMonto_transaccion(cursorTransacciones.getString(5));
+                    lista.add(transacciones);
+                }while (cursorTransacciones.moveToNext());
+            }else {
+                return null;
+            }
+        } catch (Exception ex){
+            ex.toString();
+        }
+        return lista;
     }
 }
