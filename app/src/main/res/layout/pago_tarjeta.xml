@@ -104,7 +104,7 @@
         android:inputType="number"
         android:maxLength="16"
         android:padding="7dp"
-        android:text="5123459026923513"
+        android:text="5123456178305334"
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
 
@@ -122,7 +122,7 @@
         android:inputType="number"
         android:maxLength="3"
         android:padding="7dp"
-        android:text="488"
+        android:text="256"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -171,14 +171,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cvvTarjeta"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="59dp"
         android:background="@drawable/txt_login"
         android:ems="10"
         android:hint="@string/nombreCliente"
         android:inputType="text|textCapCharacters"
         android:padding="7dp"
-        android:text="BRAYAN"
+        android:text="NELSON"
         android:textColor="@color/txt_normal"
         android:textColorHint="@color/txt_hint" />
 

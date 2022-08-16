@@ -93,6 +93,7 @@ public class BuscadorConsultarCliente extends AppCompatActivity {
     private void irConsultarCliente(){
         Intent intent = new Intent(BuscadorConsultarCliente.this, ConsultarCliente.class);
         intent.putExtra("cedula", primerCampoUno.getText().toString().trim());
+        intent.putExtra("vista", "banco");
         startActivity(intent);
     }
     private boolean validarObligatoriedad(){

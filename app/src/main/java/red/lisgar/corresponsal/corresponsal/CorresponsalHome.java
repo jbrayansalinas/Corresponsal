@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -46,6 +47,11 @@ public class CorresponsalHome extends AppCompatActivity {
     DbCorresponsal dbCorresponsal;
     String cuenta;
     Corresponsal corresponsal;
+
+    //Layout mensajeAlert
+    TextView textoAlert;
+    Button btncancelarAlert;
+    Button btnconfirmarAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,10 +123,36 @@ public class CorresponsalHome extends AppCompatActivity {
         listaOp.add(new Home(R.drawable.historial_transaccional, "Historial Transaccional", HistorialTrasacciones.class, "correo", cuenta));
         listaOp.add(new Home(R.drawable.consulta_saldo, "Consulta de saldo", ConsultarSaldo.class, "correo", cuenta));
 
-        lista = new ListaHomeAdapter(listaOp, CorresponsalHome.this, "azul");
+        lista = new ListaHomeAdapter(listaOp, CorresponsalHome.this, "azul", "visible");
         recyclerCorresponsal.setAdapter(lista);
         recyclerCorresponsal.setLayoutManager(new GridLayoutManager(CorresponsalHome.this, 2));
 
+    }
+
+    private void layoutMensajeAlert(){
+        textoAlert = findViewById(R.id.textoAlert);
+        btncancelarAlert = findViewById(R.id.btncancelarAlert);
+        btnconfirmarAlert = findViewById(R.id.btnconfirmarAlert);
+    }
+    private void toolbaarMensajeAlert(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            menuCorresponsal.setEnabled(false);
+            recyclerCorresponsal.setClickable(false);
+            recyclerCorresponsal.setEnabled(false);
+            ArrayList<Home> listaOp = new ArrayList<>();
+
+            listaOp.add(new Home(R.drawable.tarjeta, "Pago con tarjeta", Pago_tarjeta.class, "correo", cuenta));
+            listaOp.add(new Home(R.drawable.retiros, "Retiros", Retiros.class, "correo", cuenta));
+            listaOp.add(new Home(R.drawable.deposito, "Depositos", Deposito.class, "correo", cuenta));
+            listaOp.add(new Home(R.drawable.transferencias, "Transferencias", Transaccion.class, "correo", cuenta));
+            listaOp.add(new Home(R.drawable.historial_transaccional, "Historial Transaccional", HistorialTrasacciones.class, "correo", cuenta));
+            listaOp.add(new Home(R.drawable.consulta_saldo, "Consulta de saldo", ConsultarSaldo.class, "correo", cuenta));
+
+            lista = new ListaHomeAdapter(listaOp, CorresponsalHome.this, "azul", "invisible");
+            recyclerCorresponsal.setAdapter(lista);
+            recyclerCorresponsal.setLayoutManager(new GridLayoutManager(CorresponsalHome.this, 2));
+        }
+        textoAlert.setText("¿Desea salir?");
     }
 
     private void crearCliente(){
@@ -135,9 +167,28 @@ public class CorresponsalHome extends AppCompatActivity {
         intent.putExtra("correo", cuenta);
         startActivity(intent);
     }
-    private void cerrarSesion(){
-        Intent intent3 = new Intent(this, MainActivity.class);
-        startActivity(intent3);
+    private void cerrarSesion() {
+        findViewById(R.id.alertaPrincipal).setVisibility(View.VISIBLE);
+        layoutMensajeAlert();
+        toolbaarMensajeAlert();
+        btnconfirmarAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(CorresponsalHome.this, MainActivity.class);
+                startActivity(intent3);
+            }
+        });
+        btncancelarAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuCorresponsal.setEnabled(true);
+                Intent intent2 = new Intent(CorresponsalHome.this, CorresponsalHome.class);
+                intent2.putExtra("cuenta", cuenta);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivityForResult(intent2, 0);
+                overridePendingTransition(0, 0);
+            }
+        });
     }
     @Override
     public void onBackPressed() {

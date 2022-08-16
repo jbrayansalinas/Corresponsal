@@ -167,6 +167,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btncancelarTres"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/tercerCampoTres2"
@@ -182,6 +183,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnconfirmarTres"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
         android:layout_below="@+id/tercerCampoTres2"
@@ -194,5 +196,11 @@
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold" />
+    <include
+        android:id="@+id/alertaTres"
+        layout="@layout/alert_mensaje"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

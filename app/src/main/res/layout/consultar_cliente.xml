@@ -7,8 +7,13 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/bolitas_rojas"
-        android:id="@+id/bolitas_rojasConsultarCleinte"/>
+        android:id="@+id/bolitas_azulessConsultarCleinte"
+        layout="@layout/bolitas_azules" />
+
+    <include
+        android:id="@+id/bolitas_rojasConsultarCleinte"
+        layout="@layout/bolitas_rojas" />
+
 
     <TextView
         android:id="@+id/tituloConsultarCliente"
@@ -176,9 +181,9 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_below="@+id/pagoConsultarCliente"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="120dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="3dp"
+        android:layout_marginEnd="30dp"
         android:background="@color/bolita_roja" />
 
     <androidx.appcompat.widget.AppCompatButton

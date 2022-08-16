@@ -75,6 +75,11 @@ public class Transaccion extends AppCompatActivity {
     Button btncancelarUno;
     View lineaUno;
 
+    //Layout mensajeAlert
+    TextView textoAlert;
+    Button btncancelarAlert;
+    Button btnconfirmarAlert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,9 +99,23 @@ public class Transaccion extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     if (validarPin()){
-                                        realizaTransferencia();
-                                        guardarTransaccion();
-                                        mensajeOk();
+                                        findViewById(R.id.alertaUno).setVisibility(View.VISIBLE);
+                                        layoutMensajeAlert();
+                                        toolbaarMensajeAlert();
+                                        btnconfirmarAlert.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                realizaTransferencia();
+                                                guardarTransaccion();
+                                                mensajeOk();
+                                            }
+                                        });
+                                        btncancelarAlert.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                mensajeSalir();
+                                            }
+                                        });
                                     }else{Toast.makeText(Transaccion.this, "PIN incorrecto", Toast.LENGTH_LONG).show();}
                                 }
                             });
@@ -179,6 +198,18 @@ public class Transaccion extends AppCompatActivity {
 
         primerCampoUno.setHint("PIN");
         tituloUno.setText("Confirmar PIN");
+    }
+    private void layoutMensajeAlert(){
+        textoAlert = findViewById(R.id.textoAlert);
+        btncancelarAlert = findViewById(R.id.btncancelarAlert);
+        btnconfirmarAlert = findViewById(R.id.btnconfirmarAlert);
+    }
+    private void toolbaarMensajeAlert(){
+        primerCampoUno.setEnabled(false);
+        btncancelarUno.setEnabled(false);
+        btnconfirmarUno.setEnabled(false);
+        atras_Uno.setEnabled(false);
+        textoAlert.setText("La transacción tiene un costo de 1.000 pesos que se descontarán directamente de su cuenta WPOSS. ¿Desea continuar?");
     }
     private boolean validarObligatoriedad(){
         recibeDatos();

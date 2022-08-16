@@ -57,6 +57,7 @@ public class RegistrarCorresponsal extends AppCompatActivity {
     //Layout datos_corresponsal
     TextView tituloDtCorresponsal;
     View lineaDtCorresponsal;
+    ImageView atras_DtCorresponsal;
     TextView primerCampoDtCorresponsal;
     TextView segundoCampoDtCorresponsal;
     TextView tercerCampoDtCorresponsal;
@@ -207,6 +208,7 @@ public class RegistrarCorresponsal extends AppCompatActivity {
         recibeDatos();
         tituloDtCorresponsal = findViewById(R.id.tituloDtCorresponsal);
         lineaDtCorresponsal = findViewById(R.id.lineaDtCorresponsal);
+        atras_DtCorresponsal = findViewById(R.id.atras_DtCorresponsal);
         primerCampoDtCorresponsal = findViewById(R.id.primerCampoDtCorresponsal);
         segundoCampoDtCorresponsal = findViewById(R.id.segundoCampoDtCorresponsal);
         tercerCampoDtCorresponsal = findViewById(R.id.tercerCampoDtCorresponsal);
@@ -221,6 +223,12 @@ public class RegistrarCorresponsal extends AppCompatActivity {
         tercerCampoDtCorresponsal.setText(saldo);
         cuartoCampoDtCorresponsal.setText(correo);
         btnHabilitarDtCorresponsal.setVisibility(View.INVISIBLE);
+        atras_DtCorresponsal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salir();
+            }
+        });
     }
     private void recibeDatos(){
         dbCorresponsal = new DbCorresponsal(this);

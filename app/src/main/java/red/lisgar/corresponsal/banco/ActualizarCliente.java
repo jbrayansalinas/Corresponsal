@@ -50,6 +50,7 @@ public class ActualizarCliente extends AppCompatActivity {
     TextView tercerCampoDtCliente;
     Button btncancelarDtCliente;
     Button btnconfirmarDtCliente;
+    Button btnAceptarDtCliente;
     RelativeLayout relativeDatosCliente;
 
     //Layout Mensaje
@@ -244,12 +245,14 @@ public class ActualizarCliente extends AppCompatActivity {
         tercerCampoDtCliente = findViewById(R.id.tercerCampoDtCliente);
         btncancelarDtCliente = findViewById(R.id.btncancelarDtCliente);
         btnconfirmarDtCliente = findViewById(R.id.btnconfirmarDtCliente);
+        btnAceptarDtCliente = findViewById(R.id.btnAceptarDtCliente);
         relativeDatosCliente = findViewById(R.id.relativeDatosCliente);
 
         tituloDtCliente.setText("Confirmar datos Cliente");
         primerCampoDtCliente.setText(nombreCliente);
         segundoCampoDtCliente.setText(cedula);
         tercerCampoDtCliente.setText(dbCliente.mostrarSaldo(cedula));
+        btnAceptarDtCliente.setVisibility(View.INVISIBLE);
     }
     private void toolbarRojoDtCLiente(){
 

@@ -86,12 +86,18 @@ public class CrearCuenta extends AppCompatActivity {
     TextView tercerCampoDtCliente;
     Button btncancelarDtCliente;
     Button btnconfirmarDtCliente;
+    Button btnAceptarDtCliente;
     RelativeLayout relativeDatosCliente;
 
     //Layout Mensaje
     TextView tituloMensaje;
     ImageView imgMensaje;
     Button btnsalirMensaje;
+
+    //Layout mensajeAlert
+    TextView textoAlert;
+    Button btncancelarAlert;
+    Button btnconfirmarAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,20 +136,36 @@ public class CrearCuenta extends AppCompatActivity {
                                                         public void onClick(View v) {
                                                             if (validarObligatoriedadPin2()) {
                                                                 if (confirmarPin()) {
-                                                                    setContentView(R.layout.datos_cliente);
-                                                                    layoutDtCLiente();
-                                                                    toolbarRojoDtCLiente();
-                                                                    btnconfirmarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                    findViewById(R.id.alertaUno).setVisibility(View.VISIBLE);
+                                                                    layoutMensajeAlert();
+                                                                    toolbaarMensajeAlert();
+                                                                    btnconfirmarAlert.setBackground(getDrawable(R.drawable.btn_rojo_bordes));
+                                                                    btncancelarAlert.setBackground(getDrawable(R.drawable.btn_transparente_bordes_rojo));
+                                                                    btncancelarAlert.setTextColor(parseColor("#ff5f58"));
+                                                                    btnconfirmarAlert.setOnClickListener(new View.OnClickListener() {
                                                                         @Override
                                                                         public void onClick(View v) {
-                                                                            if (enviarDatosCliente()) {
-                                                                                Toast.makeText(CrearCuenta.this, "Se descontaron 10.000 por la creación", Toast.LENGTH_LONG).show();
-                                                                                restarComision();
-                                                                                irConsultarCliente();
-                                                                            } else {Toast.makeText(CrearCuenta.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
+                                                                            setContentView(R.layout.datos_cliente);
+                                                                            layoutDtCLiente();
+                                                                            toolbarRojoDtCLiente();
+                                                                            btnconfirmarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                                @Override
+                                                                                public void onClick(View v) {
+                                                                                    if (enviarDatosCliente()) {
+                                                                                        restarComision();
+                                                                                        irConsultarCliente();
+                                                                                    } else {Toast.makeText(CrearCuenta.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
+                                                                                }
+                                                                            });
+                                                                            btncancelarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                                @Override
+                                                                                public void onClick(View v) {
+                                                                                    mensajeSalir();
+                                                                                }
+                                                                            });
                                                                         }
                                                                     });
-                                                                    btncancelarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                    btncancelarAlert.setOnClickListener(new View.OnClickListener() {
                                                                         @Override
                                                                         public void onClick(View v) {
                                                                             mensajeSalir();
@@ -209,26 +231,46 @@ public class CrearCuenta extends AppCompatActivity {
                                                             public void onClick(View v) {
                                                                 if (validarObligatoriedadPin2()) {
                                                                     if (confirmarPin()) {
-                                                                        setContentView(R.layout.datos_cliente);
-                                                                        layoutDtCLiente();
-                                                                        toolbarAzulDtCliente();
-                                                                        btnconfirmarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                        findViewById(R.id.alertaUno).setVisibility(View.VISIBLE);
+                                                                        layoutMensajeAlert();
+                                                                        toolbaarMensajeAlert();
+                                                                        btnconfirmarAlert.setOnClickListener(new View.OnClickListener() {
                                                                             @Override
                                                                             public void onClick(View v) {
-                                                                                if (enviarDatosCliente()) {
-                                                                                    Toast.makeText(CrearCuenta.this, "Se descontaron 10.000 por la creación", Toast.LENGTH_LONG).show();
-                                                                                    restarComision();
-                                                                                    sumarComision();
-                                                                                    mensajeOk();
-                                                                                } else {Toast.makeText(CrearCuenta.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
+                                                                                setContentView(R.layout.datos_cliente);
+                                                                                layoutDtCLiente();
+                                                                                toolbarAzulDtCliente();
+                                                                                btnconfirmarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                                    @Override
+                                                                                    public void onClick(View v) {
+                                                                                        if (enviarDatosCliente()) {
+                                                                                            restarComision();
+                                                                                            sumarComision();
+                                                                                            mensajeOk();
+                                                                                            btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
+                                                                                                @Override
+                                                                                                public void onClick(View v) {
+                                                                                                    irConsultarClienteCorresponsal();
+                                                                                                }
+                                                                                            });
+                                                                                        } else {Toast.makeText(CrearCuenta.this, "Error al registrarse", Toast.LENGTH_LONG).show();}
+                                                                                    }
+                                                                                });
+                                                                                btncancelarDtCliente.setOnClickListener(new View.OnClickListener() {
+                                                                                    @Override
+                                                                                    public void onClick(View v) {
+                                                                                        mensajeSalirAzul();
+                                                                                    }
+                                                                                });
                                                                             }
                                                                         });
-                                                                        btncancelarDtCliente.setOnClickListener(new View.OnClickListener() {
-                                                                        @Override
-                                                                        public void onClick(View v) {
-                                                                            mensajeSalirAzul();
-                                                                        }
-                                                                    });
+                                                                        btncancelarAlert.setOnClickListener(new View.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(View v) {
+                                                                                mensajeSalirAzul();
+                                                                            }
+                                                                        });
+
                                                                     } else {Toast.makeText(CrearCuenta.this, "Pin incorrecto", Toast.LENGTH_LONG).show();}
                                                                 }else {Toast.makeText(CrearCuenta.this, "Ingrese un pin", Toast.LENGTH_LONG).show();}
                                                             }
@@ -341,8 +383,10 @@ public class CrearCuenta extends AppCompatActivity {
         recibeDatos();
         primerCampoDtCliente.setText(nombreCliente);
         segundoCampoDtCliente.setText(cedula);
-        tercerCampoDtCliente.setText(saldoCliente);
+        int saldo = Integer.parseInt(saldoCliente)-10000;
+        tercerCampoDtCliente.setText(String.valueOf(saldo));
         tituloDtCliente.setText("Confirmar datos Cliente");
+        btnAceptarDtCliente.setVisibility(View.INVISIBLE);
     }
     private void toolbarRojoDtCLiente(){
         recibeDatos();
@@ -356,7 +400,17 @@ public class CrearCuenta extends AppCompatActivity {
         tituloDtCliente.setText("Confirmar datos Cliente");
         primerCampoDtCliente.setText(nombreCliente);
         segundoCampoDtCliente.setText(cedula);
-        tercerCampoDtCliente.setText(saldoCliente);
+        int saldo = Integer.parseInt(saldoCliente)-10000;
+        tercerCampoDtCliente.setText(String.valueOf(saldo));
+        btnAceptarDtCliente.setVisibility(View.INVISIBLE);
+    }
+    private void toolbaarMensajeAlert(){
+        primerCampoUno.setEnabled(false);
+        btncancelarUno.setEnabled(false);
+        btnconfirmarUno.setEnabled(false);
+        atras_Uno.setEnabled(false);
+
+        textoAlert.setText("La creación tiene un costo de 10.000 pesos que se descontarán directamente de su cuenta WPOSS. ¿Desea continuar?");
     }
     private void layoutPin(){
         atras_Uno = findViewById(R.id.atras_Uno);
@@ -367,6 +421,11 @@ public class CrearCuenta extends AppCompatActivity {
         btnconfirmarUno = findViewById(R.id.btnconfirmarUno);
 
         primerCampoUno.setHint("PIN");
+    }
+    private void layoutMensajeAlert(){
+        textoAlert = findViewById(R.id.textoAlert);
+        btncancelarAlert = findViewById(R.id.btncancelarAlert);
+        btnconfirmarAlert = findViewById(R.id.btnconfirmarAlert);
     }
     private void layoutCrearCuenta(){
         atras_tres = findViewById(R.id.atras_tres);
@@ -395,6 +454,7 @@ public class CrearCuenta extends AppCompatActivity {
         tercerCampoDtCliente = findViewById(R.id.tercerCampoDtCliente);
         btncancelarDtCliente = findViewById(R.id.btncancelarDtCliente);
         btnconfirmarDtCliente = findViewById(R.id.btnconfirmarDtCliente);
+        btnAceptarDtCliente = findViewById(R.id.btnAceptarDtCliente);
         relativeDatosCliente = findViewById(R.id.relativeDatosCliente);
     }
     private void recibeDatos(){
@@ -491,12 +551,6 @@ public class CrearCuenta extends AppCompatActivity {
         mensaje();
         tituloMensaje.setText("Se creó el Cliente");
         imgMensaje.setImageResource(R.drawable.bien);
-        btnsalirMensaje.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                salir2();
-            }
-        });
     }
     private void salir(){
         Intent intent = new Intent(CrearCuenta.this, Banco.class);
@@ -540,6 +594,14 @@ public class CrearCuenta extends AppCompatActivity {
     private void irConsultarCliente(){
         Intent intent = new Intent(CrearCuenta.this, ConsultarCliente.class);
         intent.putExtra("cedula", cedula);
+        intent.putExtra("vista", "banco");
+        startActivity(intent);
+    }
+    private void irConsultarClienteCorresponsal(){
+        Intent intent = new Intent(CrearCuenta.this, ConsultarCliente.class);
+        intent.putExtra("cedula", cedula);
+        intent.putExtra("vista", "corresponsal");
+        intent.putExtra("correo", correoCorresponsal);
         startActivity(intent);
     }
     private void restarComision(){

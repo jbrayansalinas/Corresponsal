@@ -44,7 +44,7 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:id="@+id/atras_Uno"
+        android:id="@+id/atras_ConsultarSaldo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -56,7 +56,7 @@
         app:srcCompat="@drawable/ic_back" />
 
     <TextView
-        android:id="@+id/tituloUno"
+        android:id="@+id/tituloConsultarSaldo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -68,19 +68,19 @@
         android:textStyle="bold" />
 
     <View
-        android:id="@+id/lineaUno"
+        android:id="@+id/lineaConsultarSaldo"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_below="@+id/tituloUno"
+        android:layout_below="@+id/tituloConsultarSaldo"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="5dp"
         android:background="@color/bolita_azul" />
 
     <EditText
-        android:id="@+id/primerCampoUno"
+        android:id="@+id/primerCampoConsultarSaldo"
         android:layout_width="297dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tituloUno"
+        android:layout_below="@+id/tituloConsultarSaldo"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="105dp"
         android:layout_marginEnd="50dp"
@@ -93,10 +93,11 @@
         android:textColorHint="@color/txt_hint" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btncancelarUno"
+        android:id="@+id/btncancelarConsultarSaldo"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/primerCampoUno"
+        android:layout_below="@+id/primerCampoConsultarSaldo"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="35dp"
@@ -108,10 +109,11 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnconfirmarUno"
+        android:id="@+id/btnconfirmarConsultarSaldo"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="146dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/primerCampoUno"
+        android:layout_below="@+id/primerCampoConsultarSaldo"
         android:layout_alignParentStart="true"
         android:layout_marginStart="35dp"
         android:layout_marginTop="100dp"
@@ -122,10 +124,10 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
+
     <include
-        android:id="@+id/alertaUno"
+        android:id="@+id/alertaConsultaSal"
         layout="@layout/alert_mensaje"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"/>
+        android:layout_height="match_parent" />
 </RelativeLayout>

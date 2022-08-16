@@ -1,5 +1,6 @@
 package red.lisgar.corresponsal.banco;
 
+import static android.graphics.Color.parseColor;
 import static red.lisgar.corresponsal.R.color.bolita_roja;
 
 import android.content.Intent;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import red.lisgar.corresponsal.R;
 import red.lisgar.corresponsal.all.CrearCuenta;
+import red.lisgar.corresponsal.corresponsal.CorresponsalHome;
 import red.lisgar.corresponsal.db.DbCliente;
 import red.lisgar.corresponsal.entidades.Cliente;
 
@@ -26,11 +28,15 @@ public class ConsultarCliente extends AppCompatActivity {
     TextView numeroTarjetaModelo;
     TextView marcaTarjetaModelo;
     TextView txtcvv;
+    View lineaConsultarCliente;
+    View lineaSaldoConsultarCliente;
     TextView fechaTarjetaModelo;
     TextView nombreClienteModelo;
     TextView pagoConsultarCliente;
     Button btnConsultarCliente;
     ImageView atras_ConsultarCliente;
+    String cedulaCliente;
+    String correoCorresponsal;
 
     DbCliente dbCliente;
     Cliente cliente;
@@ -39,6 +45,10 @@ public class ConsultarCliente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consultar_cliente);
+        Bundle extras = getIntent().getExtras();
+        cedulaCliente = extras.getString("cedula");
+        correoCorresponsal = extras.getString("correo");
+        if (extras.getString("vista").equals("banco")) {
         layoutConsultarCliente();
         toolbarRojoConsultarCliente();
         nombreTarjeta();
@@ -49,6 +59,17 @@ public class ConsultarCliente extends AppCompatActivity {
                 salir();
             }
         });
+    }else if (extras.getString("vista").equals("corresponsal")){
+            layoutConsultarCliente();
+            toolbarConsultarClienteAzul();
+            nombreTarjeta();
+            btnConsultarCliente.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    salir2();
+                }
+            });
+        }
     }
     private void toolbarRojoConsultarCliente(){
 
@@ -58,12 +79,31 @@ public class ConsultarCliente extends AppCompatActivity {
                 salir();
             }
         });
+    }
+    private void toolbarConsultarClienteAzul(){
 
+        findViewById(R.id.bolitas_rojasConsultarCleinte).setVisibility(View.INVISIBLE);
+        btnConsultarCliente.setBackground(getDrawable(R.drawable.btn_azul));
+        lineaSaldoConsultarCliente.setBackgroundColor(parseColor("#3399FF"));
+        lineaConsultarCliente.setBackgroundColor(parseColor("#3399FF"));
+        atras_ConsultarCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salir2();
+            }
+        });
+    }
+    private void salir2(){
+        Intent intent = new Intent(ConsultarCliente.this, CorresponsalHome.class);
+        intent.putExtra("cuenta", correoCorresponsal);
+        startActivity(intent);
     }
     private void layoutConsultarCliente(){
         atras_ConsultarCliente = findViewById(R.id.atras_ConsultarCliente);
         numeroTarjetaModelo = findViewById(R.id.numeroTarjetaModelo);
         marcaTarjetaModelo = findViewById(R.id.marcaTarjetaModelo);
+        lineaSaldoConsultarCliente = findViewById(R.id.lineaSaldoConsultarCliente);
+        lineaConsultarCliente = findViewById(R.id.lineaConsultarCliente);
         txtcvv = findViewById(R.id.txtcvv);
         fechaTarjetaModelo = findViewById(R.id.fechaTarjetaModelo);
         nombreClienteModelo = findViewById(R.id.nombreClienteModelo);
@@ -72,8 +112,7 @@ public class ConsultarCliente extends AppCompatActivity {
 
         dbCliente = new DbCliente(this);
         cliente = new Cliente();
-        Bundle extras = getIntent().getExtras();
-        cliente = dbCliente.mostrarDatosCliente(extras.getString("cedula"));
+        cliente = dbCliente.mostrarDatosCliente(cedulaCliente);
 
         nombreClienteModelo.setText(cliente.getNombre_cliente());
         pagoConsultarCliente.setText(cliente.getSaldo_cliente());

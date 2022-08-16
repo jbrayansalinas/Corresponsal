@@ -1,13 +1,19 @@
 package red.lisgar.corresponsal.banco;
 
+import static android.graphics.Color.parseColor;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -29,7 +35,12 @@ public class Banco extends AppCompatActivity {
     ListaHomeAdapter lista;
     PopupMenu popupMenu;
 
+    //Layout mensajeAlert
+    TextView textoAlert;
+    Button btncancelarAlert;
+    Button btnconfirmarAlert;
 
+    ArrayList<Home> listaOp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +92,7 @@ public class Banco extends AppCompatActivity {
     // Opciones Array
     public void opciones(){
 
-        ArrayList<Home> listaOp = new ArrayList<>();
+       listaOp = new ArrayList<>();
 
         listaOp.add(new Home(R.drawable.crear_cliente, "Crear Cliente", CrearCuenta.class, "crearCuenta", ""));
         listaOp.add(new Home(R.drawable.registrar_corresponsal, "Registrar Corresponsal", RegistrarCorresponsal.class, "", ""));
@@ -90,10 +101,37 @@ public class Banco extends AppCompatActivity {
         listaOp.add(new Home(R.drawable.listado_clientes, "Listado Clientes", ListadoClientes.class, "", ""));
         listaOp.add(new Home(R.drawable.listado_corresponsales, "Listados Corresponsales", ListadoCorresponsal.class, "", ""));
 
-        lista = new ListaHomeAdapter(listaOp, Banco.this, "rojo");
+        lista = new ListaHomeAdapter(listaOp, Banco.this, "rojo", "visible");
         recyclerCorresponsal.setAdapter(lista);
         recyclerCorresponsal.setLayoutManager(new GridLayoutManager(Banco.this, 2));
 
+    }
+    private void layoutMensajeAlert(){
+        textoAlert = findViewById(R.id.textoAlert);
+        btncancelarAlert = findViewById(R.id.btncancelarAlert);
+        btnconfirmarAlert = findViewById(R.id.btnconfirmarAlert);
+    }
+    private void toolbaarMensajeAlert(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            menuCorresponsal.setEnabled(false);
+            recyclerCorresponsal.setClickable(false);
+            recyclerCorresponsal.setEnabled(false);
+            /*ArrayList<Home> listaOp = new ArrayList<>();
+            listaOp.add(new Home(R.drawable.crear_cliente, "Crear Cliente", Banco.class, "crearCuenta", ""));
+            listaOp.add(new Home(R.drawable.registrar_corresponsal, "Registrar Corresponsal", Banco.class, "", ""));
+            listaOp.add(new Home(R.drawable.consultar_cliente, "Consultar Clinete", Banco.class, "", ""));
+            listaOp.add(new Home(R.drawable.consultar_corresponsal, "Consultar Corresponsal", Banco.class, "", ""));
+            listaOp.add(new Home(R.drawable.listado_clientes, "Listado Clientes", Banco.class, "", ""));
+            listaOp.add(new Home(R.drawable.listado_corresponsales, "Listados Corresponsales", Banco.class, "", ""));*/
+            lista = new ListaHomeAdapter(listaOp, Banco.this, "rojo", "invisible");
+            recyclerCorresponsal.setAdapter(lista);
+            recyclerCorresponsal.setLayoutManager(new GridLayoutManager(Banco.this, 2));
+        }
+        btnconfirmarAlert.setBackground(getDrawable(R.drawable.btn_rojo_bordes));
+        btncancelarAlert.setBackground(getDrawable(R.drawable.btn_transparente_bordes_rojo));
+        btncancelarAlert.setTextColor(parseColor("#ff5f58"));
+
+        textoAlert.setText("¿Desea salir?");
     }
     private void actualizarCorresponsal(){
         Intent intent = new Intent(this, ActualizarCorresponsal.class);
@@ -105,8 +143,26 @@ public class Banco extends AppCompatActivity {
         startActivity(intent2);
     }
     private void cerrarSesion(){
-        Intent intent3 = new Intent(this, MainActivity.class);
-        startActivity(intent3);
+        findViewById(R.id.alertaPrincipal).setVisibility(View.VISIBLE);
+        layoutMensajeAlert();
+        toolbaarMensajeAlert();
+        btnconfirmarAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(Banco.this, MainActivity.class);
+                startActivity(intent3);
+            }
+        });
+        btncancelarAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuCorresponsal.setEnabled(true);
+                Intent intent2 = new Intent(Banco.this, Banco.class);
+                intent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivityForResult(intent2, 0);
+                overridePendingTransition(0,0);
+            }
+        });
     }
     @Override
     public void onBackPressed() {

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -29,11 +30,13 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
     ArrayList<Home> home;
     Context context;
     String fondo;
+    String visibilidad;
 
-    public ListaHomeAdapter(ArrayList<Home> home, Context context, String fondo) {
+    public ListaHomeAdapter(ArrayList<Home> home, Context context, String fondo, String visibilidad) {
         this.home = home;
         this.context = context;
         this.fondo = fondo;
+        this.visibilidad = visibilidad;
     }
 
     @NonNull
@@ -55,9 +58,9 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
         holder.clase = item.getClase();
         holder.direccion = item.getDireccion();
         holder.correo = item.getCorreo();
-        if (fondo.equals("azul")){
+        if (fondo.equals("azul")) {
             holder.fondo_itemHome.setCardBackgroundColor(Color.rgb(119, 183, 247));
-        }else{
+        } else {
             holder.fondo_itemHome.setCardBackgroundColor(Color.rgb(225, 138, 133));
         }
     }
@@ -82,30 +85,32 @@ public class ListaHomeAdapter extends RecyclerView.Adapter<ListaHomeAdapter.Home
             tituloItemHome = itemView.findViewById(R.id.tituloItemHome);
             fondo_itemHome = itemView.findViewById(R.id.fondo_itemHome);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Context context = view.getContext();
-                    Intent intent;
-                    switch (direccion) {
-                        case "crearCuenta":
-                            Intent intent2 = new Intent(context, CrearCuenta.class);
-                            intent2.putExtra("vista", "banco");
-                            context.startActivity(intent2);
-                        break;
-                        case "":
-                            intent = new Intent(context, (Class<?>) clase);
-                            intent.putExtra("ID", home.get(getAdapterPosition()).getId());
-                            context.startActivity(intent);
-                        break;
-                        case "correo":
-                            intent = new Intent(context, (Class<?>) clase);
-                            intent.putExtra("correo", correo);
-                            context.startActivity(intent);
-                            break;
+            if (visibilidad.equals("visible")) {
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Context context = view.getContext();
+                        Intent intent;
+                        switch (direccion) {
+                            case "crearCuenta":
+                                Intent intent2 = new Intent(context, CrearCuenta.class);
+                                intent2.putExtra("vista", "banco");
+                                context.startActivity(intent2);
+                                break;
+                            case "":
+                                intent = new Intent(context, (Class<?>) clase);
+                                intent.putExtra("ID", home.get(getAdapterPosition()).getId());
+                                context.startActivity(intent);
+                                break;
+                            case "correo":
+                                intent = new Intent(context, (Class<?>) clase);
+                                intent.putExtra("correo", correo);
+                                context.startActivity(intent);
+                                break;
+                        }
                     }
-                }
-            });
+                });
+            }
         }
     }
 }
